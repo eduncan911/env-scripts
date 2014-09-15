@@ -147,11 +147,13 @@ bar {
 }
 
 font pango: Ubuntu Mono 10
-exec --no-startup-id feh --bg-fill ~/Pictures/dual_monitor_nebula-wallpaper-2880x1800.jpg
+exec --no-startup-id feh --bg-scale ~/Pictures/dual_monitor_nebula-wallpaper-2880x1800.jpg
 
 #client.focused          #3F8AC2 #096BAA #00BAA7 #00DA8E
-client.focused          #309630 #379137 #000000 #000000
-client.focused_inactive #333333 #5F676A #ffffff #484e50
+#client.focused          #309630 #379137 #000000 #000000
+client.focused		#333333 #999999 #ffffff #000000
+#client.focused_inactive #333333 #5F676A #ffffff #484e50
+client.focused_inactive #333333 #333333 #ffffff #000000
 client.unfocused        #333333 #424242 #888888 #292d2e
 client.urgent           #C10004 #900000 #ffffff #900000
 
