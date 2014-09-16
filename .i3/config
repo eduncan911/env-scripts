@@ -174,5 +174,5 @@ exec_always --no-startup-id xset s off
 #start Dropbox
 exec --no-startup-id dropbox start
 
-# devilspie
-#exec --no-startup-id devilspie &
+# compton
+exec_always compton -CGb 
