@@ -160,6 +160,9 @@ client.urgent           #C10004 #900000 #ffffff #900000
 # disable mouse focusing (for laptops/trackpads)
 focus_follows_mouse no
 
+# no title bar
+new_window 1pixel
+
 # custom scripts
 # exec_always ~/my_script.sh
 
