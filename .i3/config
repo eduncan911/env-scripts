@@ -151,7 +151,7 @@ exec --no-startup-id feh --bg-scale ~/Pictures/dual_monitor_nebula-wallpaper-288
 
 #client.focused          #3F8AC2 #096BAA #00BAA7 #00DA8E
 #client.focused          #309630 #379137 #000000 #000000
-client.focused		#333333 #999999 #ffffff #000000
+client.focused		#333333 #838394 #ffffff #000000
 #client.focused_inactive #333333 #5F676A #ffffff #484e50
 client.focused_inactive #333333 #333333 #ffffff #000000
 client.unfocused        #333333 #424242 #888888 #292d2e
