@@ -166,7 +166,7 @@ focus_follows_mouse no
 # GO stuff
 exec GOPATH="$HOME/go"
 exec GOROOT="/usr/local/go"
-exec PATH="$PATH:$GOROOT/bin"
+exec PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
 
 # disable screensaver
 exec_always --no-startup-id xset s off

@@ -112,7 +112,7 @@ fi
 # GO stuff
 export GOPATH="$HOME/go"
 export GOROOT="/usr/local/go"
-PATH="$PATH:$GOROOT/bin"
+PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
 
 # Git prompt
 # export PS1="\u@\h:\w$ "
