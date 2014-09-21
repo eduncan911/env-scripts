@@ -10,5 +10,7 @@
 #   * ~/git-prompt for bash cli colorizing
 #   * ~/.bashrc xterm scripts
 #   * ~/.i3/ configurations
-#
+#   * cmd to disable screensaver
+
+# http://feeding.cloud.geek.nz/posts/creating-a-modern-tiling-desktop-environment-using-i3/
 
