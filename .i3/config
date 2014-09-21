@@ -14,7 +14,7 @@ set $mod Mod1
 set $wsp1 "1:term"
 set $wsp2 "2:code"
 set $wsp3 "3:code"
-set $wsp4 "4: web"
+set $wsp4 "4:web"
 set $wsp5 "5:chat"
 set $wsp6 6
 set $wsp7 7
@@ -161,10 +161,9 @@ bar {
 }
 
 font pango: Ubuntu Mono 10
-exec --no-startup-id feh --bg-scale ~/Pictures/dual_monitor_nebula-wallpaper-2880x1800.jpg
 
 # colorclass border background text indicator
-client.focused		#839496 #839496 #002b36 #000000
+client.focused		#073542 #073542 #002b36 #000000
 client.focused_inactive #073542 #073542 #839406 #000000
 client.unfocused        #073542 #073542 #839496 #000000
 client.urgent           #C10004 #900000 #ffffff #900000
@@ -172,8 +171,8 @@ client.urgent           #C10004 #900000 #ffffff #900000
 # disable mouse focusing (for laptops/trackpads)
 focus_follows_mouse no
 
-# no title bar
-new_window 1pixel
+# background
+exec --no-startup-id feh --bg-scale ~/Pictures/dual_monitor_nebula-wallpaper-2880x1800.jpg
 
 # custom scripts
 # exec_always ~/my_script.sh
@@ -183,17 +182,24 @@ exec GOPATH="$HOME/go"
 exec GOROOT="/usr/local/go"
 exec PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
 
-# disable screensaver
+# disable screensaver and lock
 exec_always --no-startup-id xset s off
 
 #start Dropbox
 exec --no-startup-id dropbox start
 
 # compton
-exec_always compton -CGb 
+exec_always --no-startup-id compton -CGb
 
 # ssh keys
 exec --no-startup-id ssh-add ~/.ssh/eduncan911_github
 exec --no-startup-id ssh-add ~/.ssh/github_sp
 exec --no-startup-id ssh-add ~/.ssh/bitbucket
 
+# window customizations
+new_window 1pixel
+for_window [class="Chrome"] border none
+
+# gnome stuff
+#exec gnome-settings-daemon
+#exec gnome-keyring-daemon /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
