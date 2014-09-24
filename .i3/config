@@ -14,10 +14,10 @@ set $mod Mod1
 set $wsp1 "1-TTY"
 set $wsp2 "2-CODE"
 set $wsp3 "3-CODE"
-set $wsp4 "4-WEB1"
-set $wsp5 "5-WEB2"
+set $wsp4 "4-WEB"
+set $wsp5 "5-WEB"
 set $wsp6 "6-CHAT"
-set $wsp7 7
+set $wsp7 "7-GIMP"
 set $wsp8 8
 set $wsp9 9
 set $wsp0 "0-GIMP"
@@ -154,6 +154,7 @@ bar {
 	#output VBOX0
 	#tray_output primary
 	colors {
+		# solarized
 	        background 		#002b36
         	statusline 		#839496
 	        focused_workspace  	#839496 #839496 #002b36
@@ -165,7 +166,7 @@ bar {
 
 font pango: Ubuntu Mono 10
 
-# colorclass border background text indicator
+# solarized colorclass border background text indicator
 client.focused		#073542 #073542 #002b36 #000000
 client.focused_inactive #073542 #073542 #839406 #000000
 client.unfocused        #073542 #073542 #839496 #000000
@@ -175,41 +176,54 @@ client.urgent           #C10004 #900000 #ffffff #900000
 focus_follows_mouse no
 
 # background
-exec --no-startup-id feh --bg-scale ~/Pictures/dual_monitor_nebula-wallpaper-2880x1800.jpg
-
-# custom scripts
-# exec_always ~/my_script.sh
-
+#exec --no-startup-id feh --bg-scale ~/Pictures/dual_monitor_nebula-wallpaper-2880x1800.jpg
+#
 # GO stuff
-exec GOPATH="$HOME/go"
-exec GOROOT="/usr/local/go"
-exec PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
-
+#exec GOPATH="$HOME/go"
+#exec GOROOT="/usr/local/go"
+#exec PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
+#
 # disable screensaver and lock
-exec_always --no-startup-id xset s off
-
+#exec_always --no-startup-id xset s off
+#
 #start Dropbox
-exec --no-startup-id dropbox start
-
+#exec --no-startup-id dropbox start
+#
 # compton
-exec_always --no-startup-id compton -CGb
-
+#exec_always --no-startup-id compton -CGb
+#
 # ssh keys
-exec --no-startup-id ssh-add ~/.ssh/eduncan911_github
-exec --no-startup-id ssh-add ~/.ssh/github_sp
-exec --no-startup-id ssh-add ~/.ssh/bitbucket
+#exec --no-startup-id ssh-add ~/.ssh/eduncan911_github
+#exec --no-startup-id ssh-add ~/.ssh/github_sp
+#exec --no-startup-id ssh-add ~/.ssh/bitbucket
 
 # window customizations
 new_window 1pixel
-for_window [class="Google-chrome"] border none
+for_window [class="Google-chrome" window_role="browser"] border none
 for_window [class="Google-chrome" window_role="pop-up"] floating enable, border normal
 for_window [class="Nautilus"] border none, floating enable
 for_window [class="Hipchat"] border none
 
-# assign specific windows
-assign [class="Gimp"] → $wsp0 
+# assign screens
+assign [class="Sublime_text"] → $wsp2
+assign [class="Google-chrome" window_role="browser"] → $wsp4
 assign [class="Hipchat"] → $wsp6
+assign [class="Gimp"] → $wsp7 
 
-# gnome stuff
-#exec gnome-settings-daemon
-#exec gnome-keyring-daemon /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+# exec once
+exec --no-startup-id ssh-add ~/.ssh/eduncan911_github
+exec --no-startup-id ssh-add ~/.ssh/github_sp
+exec --no-startup-id ssh-add ~/.ssh/bitbucket
+#exec --no-startup-id ssh-add ~/.ssh/aws_prod
+exec --no-startup-id GOPATH="$HOME/go"
+exec --no-startup-id GOROOT="/usr/local/go"
+exec --no-startup-id PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
+exec --no-startup-id feh --bg-scale ~/Pictures/dual_monitor_nebula-wallpaper-2880x1800.jpg
+#exec --no-startup-id gnome-settings-daemon
+#exec --no-startup-id gnome-keyring-daemon /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id dropbox start
+
+# exec on every i3 restart
+exec_always --no-startup-id compton -CGb
+exec_always --no-startup-id xset s off
+
