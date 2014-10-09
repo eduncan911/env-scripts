@@ -1,3 +1,5 @@
+source ~/.bash_profile
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -109,12 +111,21 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# GO stuff
-export GOPATH="$HOME/go"
-export GOROOT="/usr/local/go"
-PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
-
 # Git prompt
 # export PS1="\u@\h:\w$ "
 source ~/git-prompt.sh
 PROMPT_COMMAND='__git_ps1 "\h:\w" "\\\$ "'
+
+# Copy Progress
+function cpstat()
+{
+  local pid="${1:-$(pgrep -xn cp)}" src dst
+  [[ "$pid" ]] || return
+  while [[ -f "/proc/$pid/fd/3" ]]; do
+    read src dst < <(stat -L --printf '%s ' "/proc/$pid/fd/"{3,4})
+    (( src )) || break
+    printf 'cp %d%%\r' $((dst*100/src))
+    sleep 1
+  done
+  echo
+}
