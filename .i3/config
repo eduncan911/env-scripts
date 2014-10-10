@@ -11,6 +11,7 @@
 
 set $mod Mod1
 
+# custom variables
 set $wsp1 "1-TTY"
 set $wsp2 "2-CODE"
 set $wsp3 "3-CODE"
@@ -18,9 +19,10 @@ set $wsp4 "4-WEB"
 set $wsp5 "5-WEB"
 set $wsp6 "6-CHAT"
 set $wsp7 "7-GIMP"
-set $wsp8 8
-set $wsp9 9
+set $wsp8 "8-TTY"
+set $wsp9 "9-TTY"
 set $wsp0 "0-GIMP"
+set $bgimage ~/Pictures/dual_monitor_nebula-wallpaper-2880x1800.jpg
 
 # font for window titles. ISO 10646 = Unicode
 font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -164,7 +166,11 @@ bar {
 	}
 }
 
+# the window font (though now hidden)
 font pango: Ubuntu Mono 10
+
+# custom key bindings
+bindsym $mod+Shift+B exec --no-startup-id feh --bg-scale $bgimage
 
 # solarized colorclass border background text indicator
 client.focused		#073542 #073542 #002b36 #000000
@@ -175,17 +181,19 @@ client.urgent           #C10004 #900000 #ffffff #900000
 # disable mouse focusing (for laptops/trackpads)
 focus_follows_mouse no
 
-# window customizations
+# window customizations (xprop)
 new_window 1pixel
+#floating_minimum_size 400 x 200
+#floating_maximum_size 1900 x 1000
 for_window [class="Google-chrome" window_role="browser"] border none
 for_window [class="Google-chrome" window_role="pop-up"] floating enable, border normal
 for_window [class="Nautilus"] border none, floating enable
-for_window [class="Hipchat"] border none
+#for_window [class="HipChat"] border none
 
 # assign screens
 assign [class="Sublime_text"] → $wsp2
 assign [class="Google-chrome" window_role="browser"] → $wsp4
-assign [class="Hipchat"] → $wsp6
+assign [class="HipChat"] → $wsp6
 assign [class="Gimp"] → $wsp7 
 
 # exec once
@@ -202,5 +210,5 @@ exec --no-startup-id dropbox start
 # exec on every i3 restart
 exec_always --no-startup-id compton -CGb
 exec_always --no-startup-id xset s off
-exec_always --no-startup-id feh --bg-scale ~/Pictures/dual_monitor_nebula-wallpaper-2880x1800.jpg
+exec_always --no-startup-id feh --bg-scale $bgimage
 

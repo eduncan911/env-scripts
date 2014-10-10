@@ -14,3 +14,8 @@
 
 # http://feeding.cloud.geek.nz/posts/creating-a-modern-tiling-desktop-environment-using-i3/
 
+
+# change browser default
+# update-alternatives --config x-www-browser
+# update-alternatives --config www-browser 
+
