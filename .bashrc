@@ -129,3 +129,6 @@ function cpstat()
   done
   echo
 }
+
+# Go cross-compiling functions
+source ~/code/golang-crosscompile/crosscompile.bash
