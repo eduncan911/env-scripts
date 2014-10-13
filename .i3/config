@@ -18,7 +18,7 @@ set $wsp3 "3-CODE"
 set $wsp4 "4-WEB"
 set $wsp5 "5-WEB"
 set $wsp6 "6-CHAT"
-set $wsp7 "7-GIMP"
+set $wsp7 "7-SQL"
 set $wsp8 "8-TTY"
 set $wsp9 "9-TTY"
 set $wsp0 "0-GIMP"
@@ -189,12 +189,14 @@ for_window [class="Google-chrome" window_role="browser"] border none
 for_window [class="Google-chrome" window_role="pop-up"] floating enable, border normal
 for_window [class="Nautilus"] border none, floating enable
 #for_window [class="HipChat"] border none
+for_window [class="Mysql-workbench-bin"] border none
 
 # assign screens
+assign [class="Gimp"] → $wsp0 
 assign [class="Sublime_text"] → $wsp2
 assign [class="Google-chrome" window_role="browser"] → $wsp4
 assign [class="HipChat"] → $wsp6
-assign [class="Gimp"] → $wsp7 
+assign [class="Mysql-workbench-bin"] → $wsp7
 
 # exec once
 exec --no-startup-id GOPATH="$HOME/go"
