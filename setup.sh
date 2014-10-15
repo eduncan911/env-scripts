@@ -19,3 +19,12 @@
 # update-alternatives --config x-www-browser
 # update-alternatives --config www-browser 
 
+# setup j3-dmenu
+# git clone git@github.com:enkore/j4-dmenu-desktop.git
+# sudo apt-get install cmake
+# cd j4-dmenu-desktop
+# cmake .
+# make
+# sudo make install
+
+
