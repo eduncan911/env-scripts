@@ -151,8 +151,8 @@ bindsym $mod+r mode "resize"
 bar {
 	font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 	font pango: Ubuntu Mono 10
-	#position bottom
-	position top
+	position bottom
+	#position top
 	status_command i3status -c ~/.i3/i3status.conf
 	#output VBOX0
 	#tray_output primary
@@ -193,6 +193,7 @@ for_window [class="Sublime_text"] border none
 for_window [class="Nautilus"] border none, floating enable
 #for_window [class="HipChat"] border none
 for_window [class="Mysql-workbench-bin"] border none
+for_window [class="Dconf-editor"] floating enable
 
 # assign screens
 assign [class="Gimp"] → $wsp0 
@@ -205,7 +206,7 @@ assign [class="Mysql-workbench-bin"] → $wsp7
 exec --no-startup-id GOPATH="$HOME/go"
 exec --no-startup-id GOROOT="/usr/local/go"
 exec --no-startup-id PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
-#exec --no-startup-id gnome-settings-daemon
+exec --no-startup-id gnome-settings-daemon
 exec --no-startup-id gnome-keyring-daemon /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id ssh-add ~/.ssh/eduncan911_github
 exec --no-startup-id ssh-add ~/.ssh/github_sp

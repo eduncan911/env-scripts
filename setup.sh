@@ -14,6 +14,9 @@
 
 # http://feeding.cloud.geek.nz/posts/creating-a-modern-tiling-desktop-environment-using-i3/
 
+# fix cursor with gnome-settings-daemon
+# http://www.blog.kaiserapps.com/2013/10/how-to-fix-mouse-cursor-disappearing-in.html
+# gsettings set org.gnome.settings-daemon.plugins.cursor active false
 
 # change browser default
 # update-alternatives --config x-www-browser
