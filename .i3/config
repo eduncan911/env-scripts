@@ -218,4 +218,4 @@ exec_always --no-startup-id xset s off
 exec_always --no-startup-id feh --bg-scale $bgimage
 
 # autorun
-exec --no-startup-id i3-msg 'workspace $wsp1; exec gnome-terminal.wrapper; workspace $wsp2; exec subl; workspace $wsp4; exec google-chrome; workspace $wsp1'
+exec --no-startup-id i3-msg 'workspace $wsp1; exec gnome-terminal.wrapper; workspace $wsp2; exec subl; workspace $wsp1'
