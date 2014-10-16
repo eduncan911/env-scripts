@@ -193,6 +193,7 @@ for_window [class="Sublime_text"] border none
 for_window [class="Nautilus"] floating enable
 #for_window [class="HipChat"] border none
 for_window [class="Mysql-workbench-bin"] border none
+for_window [class="Pgadmin3"] border none
 for_window [class="Dconf-editor"] floating enable
 for_window [class="Iceweasel"] border none
 
@@ -202,6 +203,7 @@ assign [class="Sublime_text"] → $wsp2
 assign [class="Google-chrome" window_role="browser"] → $wsp4
 assign [class="HipChat"] → $wsp6
 assign [class="Mysql-workbench-bin"] → $wsp7
+assign [class="Pgadmin3"] → $wsp7
 assign [class="Iceweasel"] → $wsp9
 
 # exec once
