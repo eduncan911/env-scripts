@@ -190,7 +190,7 @@ new_window 1pixel
 for_window [class="Google-chrome" window_role="browser"] border none
 for_window [class="Google-chrome" window_role="pop-up"] floating enable, border normal
 for_window [class="Sublime_text"] border none
-for_window [class="Nautilus"] border none, floating enable
+for_window [class="Nautilus"] floating enable
 #for_window [class="HipChat"] border none
 for_window [class="Mysql-workbench-bin"] border none
 for_window [class="Dconf-editor"] floating enable
