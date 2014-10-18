@@ -12,22 +12,29 @@
 #   * ~/.i3/ configurations
 #   * cmd to disable screensaver
 
+# add some fonts
+#sudo apt-get install  ttf-mscorefonts-installer
+# instead, install the Windows 8.1 fonts!!!
+# http://www.webupd8.org/2013/07/how-to-download-and-install-windows-81.html
+
+# gnome apps
+sudo apt-get install gnome-tweak-tool
+
 # http://feeding.cloud.geek.nz/posts/creating-a-modern-tiling-desktop-environment-using-i3/
 
 # fix cursor with gnome-settings-daemon
 # http://www.blog.kaiserapps.com/2013/10/how-to-fix-mouse-cursor-disappearing-in.html
-# gsettings set org.gnome.settings-daemon.plugins.cursor active false
+gsettings set org.gnome.settings-daemon.plugins.cursor active false
 
 # change browser default
-# update-alternatives --config x-www-browser
-# update-alternatives --config www-browser 
+update-alternatives --config x-www-browser
+update-alternatives --config www-browser 
 
 # setup j3-dmenu
-# git clone git@github.com:enkore/j4-dmenu-desktop.git
-# sudo apt-get install cmake
-# cd j4-dmenu-desktop
-# cmake .
-# make
-# sudo make install
-
+git clone git@github.com:enkore/j4-dmenu-desktop.git
+sudo apt-get install cmake
+cd j4-dmenu-desktop
+cmake .
+make
+sudo make install
 
