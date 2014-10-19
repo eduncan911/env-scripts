@@ -172,7 +172,7 @@ font pango: Ubuntu Mono 10
 
 # custom key bindings
 bindsym $mod+Shift+B exec --no-startup-id feh --bg-scale $bgimage
-#bindsys $mod+Shift+Z exec --no-startup-id j3-dmenu-desktop
+bindsys $mod+b exec --no-startup-id j3-dmenu-desktop
 #bindsym Super exec --no-startup-id j3-dmenu-desktop
 bindsym Control+Shift+Escape exec --no-startup-id gnome-system-monitor
 
@@ -189,9 +189,10 @@ focus_follows_mouse no
 new_window 1pixel
 #floating_minimum_size 400 x 200
 #floating_maximum_size 1900 x 1000
+for_window [class="(.*)?"] floating enable
 for_window [class="Google-chrome" window_role="browser"] border none
 for_window [class="Google-chrome" window_role="pop-up"] floating enable, border normal
-for_window [class="Sublime_text"] border none
+for_window [class="Sublime_text"] border none, floating disable
 for_window [class="Nautilus"] floating enable
 #for_window [class="HipChat"] border none
 for_window [class="Mysql-workbench-bin"] border none

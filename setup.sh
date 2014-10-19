@@ -19,12 +19,18 @@
 # convert the Helvetica one using: http://onlinefontconverter.com/font?id=p1
 
 # gnome apps
-sudo apt-get install gnome-tweak-tool gnome-system-log gucharmap
+sudo apt-get install gnome-tweak-tool gnome-system-log gucharmap gnome-packagekit \
+gnome-chess gnome-clocks gnome-control-center gnome-control-center-data \
+gnome-control-center-dev gnome-desktop-data dia evolution evolution-ews file-roller \
+gnome-session gnome-settings-daemon gnome-panel evince gnomine gnome-font-viewer \
+gnome-hearts gnome-music gnome-nettool gnome-sushi gnome-system-tools ntp \
+gnome-media-profiles
 
 # setup some aliases
 pushd ~/bin
 ln -s /usr/bin/gucharmap gnome-charactermap
 ln -s /usr/bin/nautilus gnome-files
+ln -s /usr/bin/gpk-application gnome-application
 popd
 
 # http://feeding.cloud.geek.nz/posts/creating-a-modern-tiling-desktop-environment-using-i3/
