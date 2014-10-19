@@ -16,9 +16,16 @@
 #sudo apt-get install  ttf-mscorefonts-installer
 # instead, install the Windows 8.1 fonts!!!
 # http://www.webupd8.org/2013/07/how-to-download-and-install-windows-81.html
+# convert the Helvetica one using: http://onlinefontconverter.com/font?id=p1
 
 # gnome apps
-sudo apt-get install gnome-tweak-tool
+sudo apt-get install gnome-tweak-tool gnome-system-log gucharmap
+
+# setup some aliases
+pushd ~/bin
+ln -s /usr/bin/gucharmap gnome-charactermap
+ln -s /usr/bin/nautilus gnome-files
+popd
 
 # http://feeding.cloud.geek.nz/posts/creating-a-modern-tiling-desktop-environment-using-i3/
 

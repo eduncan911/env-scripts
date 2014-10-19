@@ -151,8 +151,8 @@ bindsym $mod+r mode "resize"
 bar {
 	font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 	font pango: Ubuntu Mono 10
-	position bottom
-	#position top
+	#position bottom
+	position top
 	status_command i3status -c ~/.i3/i3status.conf
 	#output VBOX0
 	#tray_output primary
