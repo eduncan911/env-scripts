@@ -20,7 +20,7 @@ set $wsp5 "5-WEB"
 set $wsp6 "6-CHAT"
 set $wsp7 "7-SQL"
 set $wsp8 "8-TTY"
-set $wsp9 "9-TTY"
+set $wsp9 "9-MAIL"
 set $wsp0 "0-GIMP"
 set $bgimage ~/Pictures/dual_monitor_nebula-wallpaper-2880x1800.jpg
 
@@ -150,7 +150,8 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
 	font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-	font pango: Ubuntu Mono 10
+	#font pango: Ubuntu Mono 10
+	font pango: Segoe UI Regular 11
 	#position bottom
 	position top
 	status_command i3status -c ~/.i3/i3status.conf
@@ -168,7 +169,8 @@ bar {
 }
 
 # the window font (though now hidden)
-font pango: Ubuntu Mono 10
+#font pango: Ubuntu Mono 10
+font pango: Segoe UI Regular 11
 
 # custom key bindings
 bindsym $mod+Shift+B exec --no-startup-id feh --bg-scale $bgimage
@@ -189,18 +191,25 @@ focus_follows_mouse no
 new_window 1pixel
 #floating_minimum_size 400 x 200
 #floating_maximum_size 1900 x 1000
-for_window [class="(.*)?"] floating enable
-for_window [class="Google-chrome" window_role="browser"] border none
-for_window [class="Google-chrome" window_role="pop-up"] floating enable, border normal
+for_window [class="(.*)?"] floating enable, border none
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [title="Preferences$"] floating enable
+for_window [class="Gnome-terminal" window_role="gnome-terminal-window(.*)?"] border 1pixel
+for_window [class="Google-chrome" window_role="browser"] floating disable, border none
+#for_window [class="Google-chrome" window_role="pop-up"] floating enable, border normal
 for_window [class="Sublime_text"] border none, floating disable
-for_window [class="Nautilus"] floating enable
-#for_window [class="HipChat"] border none
-for_window [class="Mysql-workbench-bin"] border none
-for_window [class="Pgadmin3"] border none
-for_window [class="Dconf-editor"] floating enable
-for_window [class="Iceweasel"] border none
-for_window [class="Gnome-(.*)?"] floating enable
+#for_window [class="Nautilus"] floating enable
+for_window [class="HipChat"] floating disable, border none
+for_window [class="Mysql-workbench-bin"] floating disable, border none
+for_window [class="Pgadmin3"] floating disable, border none
+#for_window [class="Dconf-editor"] floating enable
+for_window [class="Iceweasel"] floating disable, border none
 for_window [class="Gnome-terminal"] floating disable
+for_window [class="Evolution"] border 1pixel
+for_window [class="Evolution" window_role="EShellWindow-(.*)?"] floating disable
+for_window [class="Gimp" window_role="gimp-image-window"] floating disable
+for_window [class="Vlc" window_role="vlc-main"] floating disable
 
 # assign screens
 assign [class="Gimp"] → $wsp0 
@@ -209,7 +218,8 @@ assign [class="Google-chrome" window_role="browser"] → $wsp4
 assign [class="HipChat"] → $wsp6
 assign [class="Mysql-workbench-bin"] → $wsp7
 assign [class="Pgadmin3"] → $wsp7
-assign [class="Iceweasel"] → $wsp9
+assign [class="Iceweasel"] → $wsp5
+assign [class="Evolution"] → $wsp9
 
 # exec once
 exec --no-startup-id GOPATH="$HOME/go"

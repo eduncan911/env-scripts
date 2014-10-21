@@ -26,6 +26,9 @@ gnome-session gnome-settings-daemon gnome-panel evince gnomine gnome-font-viewer
 gnome-hearts gnome-music gnome-nettool gnome-sushi gnome-system-tools ntp \
 gnome-media-profiles
 
+# utilities
+sudo apt-get install iotop nmon
+
 # setup some aliases
 pushd ~/bin
 ln -s /usr/bin/gucharmap gnome-charactermap
