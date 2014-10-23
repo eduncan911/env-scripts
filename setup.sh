@@ -27,7 +27,7 @@ gnome-hearts gnome-music gnome-nettool gnome-sushi gnome-system-tools ntp \
 gnome-media-profiles
 
 # utilities
-sudo apt-get install iotop nmon
+sudo apt-get install iotop nmon baobab
 
 # setup some aliases
 pushd ~/bin
