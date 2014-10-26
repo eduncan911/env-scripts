@@ -54,3 +54,8 @@ cmake .
 make
 sudo make install
 
+# controlling the monitors
+# source: http://pkg-xorg.alioth.debian.org/howto/use-xrandr.html
+xrandr --output VBOX1 --off
+xrandr --output VBOX1 --above VBOX0
+# also: --left-of --right-of --below
