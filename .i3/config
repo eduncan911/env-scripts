@@ -204,7 +204,7 @@ for_window [class="Google-chrome" window_role="browser"] floating disable, borde
 for_window [class="Sublime_text"] border none, floating disable
 #for_window [class="Nautilus"] floating enable
 for_window [class="HipChat"] floating disable, border none
-for_window [class="Mysql-workbench-bin"] floating disable, border none
+for_window [class="Mysql-workbench-bin" window_role="\A\z"] floating disable, border none
 for_window [class="Pgadmin3"] floating disable, border none
 #for_window [class="Dconf-editor"] floating enable
 for_window [class="Iceweasel"] floating disable, border none
