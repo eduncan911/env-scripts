@@ -115,7 +115,22 @@ fi
 # Git prompt
 # export PS1="\u@\h:\w$ "
 source ~/git-prompt.sh
-PROMPT_COMMAND='__git_ps1 "\h:\w" "\\\$ "'
+PROMPT_COMMAND='history -a;history -c;history -r;__git_ps1 "\h:\w" "\\\$ "'
+
+# Git helpers
+function gitpending()
+{
+  for d in */ ; do
+    pushd $d > /dev/null
+    DIRNAME=$(basename "$d")
+
+    if ! git diff-index --quiet HEAD --; then
+      echo $DIRNAME
+    fi
+
+    popd > /dev/null
+  done
+}
 
 # Copy Progress
 function cpstat()
@@ -129,6 +144,18 @@ function cpstat()
     sleep 1
   done
   echo
+}
+# Xrandr functions
+function xrandr1()
+{
+  xrandr --output VBOX1 --off
+}
+function xrandr2()
+{
+  xrandr --output VBOX1 --auto && xrandr --output VBOX1 --above VBOX0
+}
+function xrandr3()
+{ xrandr --output VBOX1 --auto && xrandr --output VBOX2 --auto && xrandr --output VBOX1 --rightof VBOX0 && xrandr --output VBOX2 --leftof VBOX0
 }
 
 # Go cross-compiling functions
