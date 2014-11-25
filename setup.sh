@@ -24,7 +24,7 @@ gnome-chess gnome-clocks gnome-control-center gnome-control-center-data \
 gnome-control-center-dev gnome-desktop-data dia evolution evolution-ews file-roller \
 gnome-session gnome-settings-daemon gnome-panel evince gnomine gnome-font-viewer \
 gnome-hearts gnome-music gnome-nettool gnome-sushi gnome-system-tools ntp \
-gnome-media-profiles Polari
+gnome-media-profiles Polari gcolor2
 
 # utilities
 sudo apt-get install iotop nmon baobab
