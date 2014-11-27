@@ -209,6 +209,7 @@ for_window [class="Pgadmin3"] floating disable, border none
 #for_window [class="Dconf-editor"] floating enable
 for_window [class="Iceweasel"] floating disable, border none
 for_window [class="Gnome-terminal"] floating disable
+for_window [class="Gnome-terminal" window_role="gnome-terminal-profile-manager"] floating enabled, border 1pixel
 for_window [class="Evolution"] border 1pixel
 for_window [class="Evolution" window_role="EShellWindow-(.*)?"] floating disable
 for_window [class="Gimp" window_role="gimp-image-window"] floating disable
