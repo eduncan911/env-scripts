@@ -150,7 +150,7 @@ txtrst='\e[0m'    # Text Reset
 # export PS1="\u@\h:\w$ "
 source ~/git-prompt.sh
 #PROMPT_COMMAND='history -a;history -c;history -r;__git_ps1 "\h:\w" "\\\$ "'
-PROMPT_COMMAND='history -a;__git_ps1 "${txtcyn}\u@\h:\W${txtrst}/" "\\\$ "'
+PROMPT_COMMAND='history -a;__git_ps1 "${txtcyn}\u@\h \W/${txtrst}" "\\\$ "'
 
 # Git helpers
 function gitpending()
