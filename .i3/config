@@ -182,10 +182,9 @@ bindsym Control+Shift+Escape exec --no-startup-id gnome-system-monitor
 #bindsym Control-Shift+} exec --no-startup-id xrandr --output VBOX1 --above VBOX0
 
 # solarized colorclass border background text indicator
-#client.focused			#073542 #073542 #002b36 #000000
-client.focused			#073542 #073542 #839496 #000000
-client.focused_inactive #073542 #073542 #839496 #000000
-client.unfocused        #073542 #073542 #839496 #000000
+client.focused			#002B36 #586E75 #242424 #000000
+client.focused_inactive #002B36 #073542 #839496 #000000
+client.unfocused        #002B36 #073542 #839496 #000000
 client.urgent           #C10004 #900000 #ffffff #900000
 
 # disable mouse focusing (for laptops/trackpads)
@@ -193,6 +192,8 @@ focus_follows_mouse no
 
 # window customizations (xprop)
 new_window 1pixel
+new_float 1pixel
+#hide_edge_borders both # <none|vertical|horizontal|both>
 #floating_minimum_size 400 x 200
 #floating_maximum_size 1900 x 1000
 for_window [class="(.*)?"] floating enable
@@ -202,7 +203,8 @@ for_window [title="Preferences$"] floating enable
 for_window [class="Gnome-terminal" window_role="gnome-terminal-window(.*)?"] border 1pixel
 for_window [class="Google-chrome" window_role="browser"] floating disable, border none
 #for_window [class="Google-chrome" window_role="pop-up"] floating enable, border normal
-for_window [class="Sublime_text"] border none, floating disable
+for_window [class="Sublime_text" title="Sublime Text$"] border none, floating disable
+for_window [class="Sublime_text" title="^((?!Sublime Text).)*$"] border 1pixel, floating enable
 #for_window [class="Nautilus"] floating enable
 for_window [class="HipChat"] floating disable, border none
 for_window [class="Mysql-workbench-bin" window_role="\A\z"] floating disable, border none
