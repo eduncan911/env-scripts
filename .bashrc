@@ -195,3 +195,6 @@ function xrandr3()
 
 # Go cross-compiling functions
 source ~/code/golang-crosscompile/crosscompile.bash
+
+# monochrome vlc
+alias nvlc='nvlc --no-color --browse-dir /media/sf_media/'
