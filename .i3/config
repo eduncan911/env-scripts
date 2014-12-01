@@ -220,7 +220,7 @@ for_window [class="Vlc" window_role="vlc-main"] floating disable
 
 # assign screens
 assign [class="Gimp"] → $wsp0 
-assign [class="Sublime_text"] → $wsp2
+assign [class="Sublime_text" title="Sublime Text$"] → $wsp2
 assign [class="Google-chrome" window_role="browser"] → $wsp4
 assign [class="HipChat"] → $wsp6
 assign [class="Mysql-workbench-bin"] → $wsp7
