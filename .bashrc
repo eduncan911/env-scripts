@@ -180,17 +180,21 @@ function cpstat()
   done
   echo
 }
+
 # Xrandr functions
-function xrandr1()
-{
+function xrandr1() {
   xrandr --output VBOX1 --off
 }
-function xrandr2()
-{
+function xrandr2() {
   xrandr --output VBOX1 --auto && xrandr --output VBOX1 --above VBOX0
 }
-function xrandr3()
-{ xrandr --output VBOX1 --auto && xrandr --output VBOX2 --auto && xrandr --output VBOX1 --rightof VBOX0 && xrandr --output VBOX2 --leftof VBOX0
+function xrandr3() { 
+  xrandr --output VBOX1 --auto && xrandr --output VBOX2 --auto && xrandr --output VBOX1 --rightof VBOX0 && xrandr --output VBOX2 --leftof VBOX0
+}
+
+# volume control (since a lack thereof in i3)
+function vol() {
+  pactl set-sink-volume 0 -- "$1"% && pactl set-sink-mute 0 0
 }
 
 # Go cross-compiling functions
