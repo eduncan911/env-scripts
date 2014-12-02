@@ -194,6 +194,12 @@ function xrandr3() {
 
 # volume control (since a lack thereof in i3)
 function vol() {
+  if [ "$1" = "" ]; then
+    echo "Usage: vol 50"
+    echo "       vol +10"
+    echo "       vol -5"
+    return
+  fi
   pactl set-sink-volume 0 -- "$1"% && pactl set-sink-mute 0 0
 }
 
