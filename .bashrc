@@ -116,7 +116,7 @@ fi
 # Custom prompt w/Git & History
 # correct ANSI escapes: https://www.kirsle.net/wizards/ps1.html
 source ~/git-prompt.sh
-PROMPT_COMMAND='history -a;__git_ps1 "\[$(tput setaf 2)\]\u@\h \W\\$ \[$(tput sgr0)\]" ""'
+PROMPT_COMMAND='history -a;__git_ps1 "\[$(tput setaf 2)\]\u@\h \W\[$(tput sgr0)\]" "\[$(tput setaf 2)\] \\$ \[$(tput sgr0)\]"'
 
 # Git helpers
 function gitpending()
