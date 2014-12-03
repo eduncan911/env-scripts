@@ -218,8 +218,8 @@ for_window [class="Pgadmin3"] floating disable, border none
 for_window [class="Iceweasel"] floating disable, border none
 for_window [class="Gnome-terminal"] floating disable
 for_window [class="Gnome-terminal" window_role="gnome-terminal-profile-manager"] floating enabled, border 1pixel
-for_window [class="Evolution"] border 1pixel
-for_window [class="Evolution" window_role="EShellWindow-(.*)?"] floating disable
+for_window [class="(Evolution|Mail)" title="Evolution$"] floating disable, border none
+#for_window [class="(Evolution|Mail)" window_role="EShellWindow-(.*)?"] floating enable
 for_window [class="Gimp" window_role="gimp-image-window"] floating disable
 for_window [class="Vlc" window_role="vlc-main"] floating disable
 
@@ -231,7 +231,7 @@ assign [class="HipChat"] → $wsp6
 assign [class="Mysql-workbench-bin"] → $wsp7
 assign [class="Pgadmin3"] → $wsp7
 assign [class="Iceweasel"] → $wsp5
-assign [class="Evolution"] → $wsp9
+assign [class="(Evolution|Mail)"] → $wsp9
 
 # exec once
 exec --no-startup-id GOPATH="$HOME/go"
