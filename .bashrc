@@ -21,6 +21,7 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=100000
 HISTFILESIZE=50000
+HISTTIMEFORMAT="%d/%m/%y %T "
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -155,7 +156,7 @@ function xrandr2() {
   xrandr --output VBOX1 --auto && xrandr --output VBOX1 --above VBOX0
 }
 function xrandr3() { 
-  xrandr --output VBOX1 --auto && xrandr --output VBOX2 --auto && xrandr --output VBOX1 --rightof VBOX0 && xrandr --output VBOX2 --leftof VBOX0
+  xrandr --output VBOX1 --auto && xrandr --output VBOX2 --auto && xrandr --output VBOX1 --right-of VBOX0 && xrandr --output VBOX2 --left-of VBOX0
 }
 
 # volume control (since a lack thereof in i3)
