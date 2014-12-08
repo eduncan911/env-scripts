@@ -34,6 +34,10 @@ Fonts : Hinting - Slight
 sudo apt-get install intltool libgtk-3-dev
 git clone https://github.com/Unia/gcolor3
 
+# disable screen blanking in gnome
+xset -dpms
+xset s off
+
 # Adwaita Dark for Qt4 / GTK 2.0 apps
 sudo apt-get install qt4-qtconfig
 # ^- use this app to configure the default theme to use GTK+
