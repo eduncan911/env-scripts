@@ -236,6 +236,7 @@ assign [class="Iceweasel"] → $wsp5
 assign [class="(Evolution|Mail)"] → $wsp9
 
 # exec once
+exec --no-startup-id /usr/bin/vmware-user
 exec --no-startup-id GOPATH="$HOME/go"
 exec --no-startup-id GOROOT="/usr/local/go"
 exec --no-startup-id PATH="$PATH:$GOROOT/bin:$GOPATH/bin"

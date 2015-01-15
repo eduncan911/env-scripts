@@ -80,3 +80,7 @@ sudo make install
 xrandr --output VBOX1 --off
 xrandr --output VBOX1 --above VBOX0
 # also: --left-of --right-of --below
+
+# git rebase on all pulls
+# http://kernowsoul.com/blog/2012/06/20/4-ways-to-avoid-merge-commits-in-git/
+git config --global branch.autosetuprebase always

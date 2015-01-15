@@ -150,13 +150,16 @@ function cpstat()
 
 # Xrandr functions
 function xrandr1() {
-  xrandr --output VBOX1 --off
+  #xrandr --output VBOX1 --off
+  xrandr --output Virtual2 --off
 }
 function xrandr2() {
-  xrandr --output VBOX1 --auto && xrandr --output VBOX1 --above VBOX0
+  #xrandr --output VBOX1 --auto && xrandr --output VBOX1 --above VBOX0
+  xrandr --output Virtual2 --auto && xrandr --output Virtual2 --above Virtual1
 }
 function xrandr3() { 
-  xrandr --output VBOX1 --auto && xrandr --output VBOX2 --auto && xrandr --output VBOX1 --right-of VBOX0 && xrandr --output VBOX2 --left-of VBOX0
+  #xrandr --output VBOX1 --auto && xrandr --output VBOX2 --auto && xrandr --output VBOX1 --right-of VBOX0 && xrandr --output VBOX2 --left-of VBOX0
+  xrandr --output Virtual2 --auto && xrandr --output Virtual3 --auto && xrandr --output Virtual2 --right-of Virtual1 && xrandr --output Virtual3 --left-of Virtual1
 }
 
 # volume control (since a lack thereof in i3)
