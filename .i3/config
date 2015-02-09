@@ -246,6 +246,8 @@ exec --no-startup-id dropbox start
 exec --no-startup-id ssh-add ~/.ssh/eduncan911_github
 exec --no-startup-id ssh-add ~/.ssh/github_sp
 exec --no-startup-id ssh-add ~/.ssh/bitbucket
+exec --no-startup-id ssh-add ~/.ssh/id_rsa
+exec --no-startup-id ssh-add ~/.ssh/id_dsa
 exec --no-startup-id xset -dpms && xset s off
 
 # exec on every i3 restart

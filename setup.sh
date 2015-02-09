@@ -67,6 +67,9 @@ gsettings set org.gnome.settings-daemon.plugins.cursor active false
 update-alternatives --config x-www-browser
 update-alternatives --config www-browser 
 
+# UML app
+http://staruml.io
+
 # setup j3-dmenu
 git clone git@github.com:enkore/j4-dmenu-desktop.git
 sudo apt-get install cmake
@@ -84,3 +87,4 @@ xrandr --output VBOX1 --above VBOX0
 # git rebase on all pulls
 # http://kernowsoul.com/blog/2012/06/20/4-ways-to-avoid-merge-commits-in-git/
 git config --global branch.autosetuprebase always
+
