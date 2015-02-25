@@ -1,7 +1,7 @@
 # source scripts
-. ~/.bash_profile                               # GOROOT/GOPATH 
-. ~/code/golang-crosscompile/crosscompile.bash  # Go cross-compiling
-. ~/bin/git-prompt.sh				# Git-enabled prompt
+. /home/eric/.bash_profile                            	# GOROOT/GOPATH 
+. /home/eric/code/golang-crosscompile/crosscompile.bash	# Go cross-compiling
+#. /home/eric/bin/git-prompt.sh							# Git-enabled prompt
 
 # aliases
 alias ll='ls -alF'
