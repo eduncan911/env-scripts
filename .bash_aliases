@@ -1,13 +1,14 @@
 # source scripts
 . /home/eric/.bash_profile                            	# GOROOT/GOPATH 
 . /home/eric/code/golang-crosscompile/crosscompile.bash	# Go cross-compiling
-#. /home/eric/bin/git-prompt.sh							# Git-enabled prompt
 
 # aliases
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias nvlc='nvlc --no-color --browse-dir /media/sf_media/'
+alias nautilus='nautilus --no-desktop'
+alias files='nautilus --no-desktop'
 
 # history
 HISTSIZE=1000000
@@ -15,7 +16,19 @@ HISTFILESIZE=500000
 HISTTIMEFORMAT="%d/%m/%y %T "
 
 # color prompt w/Git: correct ANSI escapes: https://www.kirsle.net/wizards/ps1.html
-export PROMPT_COMMAND='history -a; history -c; history -r;__git_ps1 "\[$(tput setaf 2)\]\u@\h \W\[$(tput sgr0)\]" "\[$(tput setaf 2)\] \\$ \[$(tput sgr0)\]"'
+function virtualenv_info(){
+    # Get Virtual Env
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+        # Strip out the path and just leave the env name
+        venv="${VIRTUAL_ENV##*/}"
+    else
+        # In case you don't have one activated
+        venv=''
+    fi
+    [[ -n "$venv" ]] && echo "[$venv] "
+}
+VENV="\$(virtualenv_info)";
+export PROMPT_COMMAND='history -a; history -c; history -r;__git_ps1 "\[$(tput setaf 2)\]\u@\h:\W\[$(tput sgr0)\]" " \[$(tput setaf 6)\]${VENV}\[$(tput setaf 2)\]\\$ \[$(tput sgr0)\]"'
 
 # functions
 function gitpending()

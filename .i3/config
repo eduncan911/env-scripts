@@ -9,6 +9,12 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+# env
+# xmodmap -pm
+# xmodmap -e "add Mod4 = Super_L"
+# xmodmap -e "clear mod4" ; xmodmap -e "add Mod4 = Super_L"
+# Mod1 Alt_L
+# Mod4 Super_L
 set $mod Mod1
 
 # custom variables
@@ -22,7 +28,7 @@ set $wsp7 "7-SQL"
 set $wsp8 "8-TTY"
 set $wsp9 "9-MAIL"
 set $wsp0 "0-GIMP"
-set $bgimage ~/Pictures/dual_monitor_nebula-wallpaper-2880x1800.jpg
+set $bgimage ~/Pictures/2880x1800-forest-fam.jpg
 
 # font for window titles. ISO 10646 = Unicode
 font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -78,7 +84,7 @@ bindsym $mod+v split v
 bindsym $mod+e layout default
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+space floating toggle, border toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -187,6 +193,8 @@ bindsym Control+Shift+Escape exec --no-startup-id gnome-system-monitor
 #bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
 bindsym Mod1+p exec scrot '%Y-%m-%d_$wx$h_scrot.png' -e 'mv $f ~/images/shots/'
 bindsym Mod1+Shift+p exec scrot -s '%Y-%m-%d_$wx$h_scrot.png' -e 'mv $f ~/images/shots/' # select window or rectangle
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
 
 # solarized colorclass border background text indicator
 client.focused			#002B36 #586E75 #242424 #000000
@@ -199,7 +207,8 @@ focus_follows_mouse no
 
 # window customizations (xprop)
 new_window 1pixel
-new_float 1pixel
+#new_float 1pixel
+#new_float normal 1px
 #hide_edge_borders both # <none|vertical|horizontal|both>
 #floating_minimum_size 400 x 200
 #floating_maximum_size 1900 x 1000
@@ -209,7 +218,6 @@ for_window [window_role="task_dialog"] floating enable
 for_window [title="Preferences$"] floating enable
 for_window [class="Gnome-terminal" window_role="gnome-terminal-window(.*)?"] border 1pixel
 for_window [class="Google-chrome" window_role="browser"] floating disable, border none
-#for_window [class="Google-chrome" window_role="pop-up"] floating enable, border normal
 for_window [class="Sublime_text" title="Sublime Text$"] border none, floating disable
 for_window [class="Sublime_text" title="^((?!Sublime Text).)*$"] border 1pixel, floating enable
 #for_window [class="Nautilus"] floating enable
@@ -236,26 +244,27 @@ assign [class="Iceweasel"] → $wsp5
 assign [class="(Evolution|Mail)"] → $wsp9
 
 # exec once
-#exec --no-startup-id /usr/bin/vmware-user
+exec --no-startup-id /usr/bin/vmware-user
 exec --no-startup-id GOPATH="$HOME/go"
 exec --no-startup-id GOROOT="/usr/local/go"
 exec --no-startup-id PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
 exec --no-startup-id gnome-settings-daemon
 exec --no-startup-id gnome-keyring-daemon /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id dropbox start
-exec --no-startup-id ssh-add ~/.ssh/eduncan911_github
-exec --no-startup-id ssh-add ~/.ssh/github_sp
+exec --no-startup-id ssh-add ~/.ssh/eduncan911_github && ssh-add ~/.ssh/github_sp
 exec --no-startup-id ssh-add ~/.ssh/bitbucket
 exec --no-startup-id ssh-add ~/.ssh/id_rsa
 exec --no-startup-id ssh-add ~/.ssh/id_dsa
-exec --no-startup-id xset -dpms && xset s off
+exec --no-startup-id compton -Cb --config ~/.i3/compton.conf # -CGb
 
 # exec on every i3 restart
-exec_always --no-startup-id compton -CGb
-exec_always --no-startup-id xset s off
-exec_always --no-startup-id feh --bg-scale $bgimage
+exec_always --no-startup-id xset -dpms && xset s off
+#exec_always --no-startup-id feh --bg-scale $bgimage
+exec --no-startup-id nitrogen --restore
 exec_always --no-startup-id pactl set-sink-volume 0 -- 100% && pactl set-sink-mute 0 0
+#exec_always --no-startup-id xrandr --dpi 144  # xdpyinfo | grep dots
+#exec_always --no-startup-id xrandr --output Virtual1 --mode 2880x1800 --scale .6x.6
+#exec_always --no-startup-id xrandr --output Virtual1 --mode 5760x3600 --scale .3x.3
 
-# autorun
-#exec --no-startup-id i3-msg 'workspace $wsp1; exec gnome-terminal.wrapper; workspace $wsp2; exec subl; workspace $wsp1'
+# setup workstation
 exec --no-startup-id i3-msg 'workspace $wsp1; exec gnome-terminal.wrapper; workspace $wsp1'

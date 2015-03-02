@@ -88,3 +88,5 @@ xrandr --output VBOX1 --above VBOX0
 # http://kernowsoul.com/blog/2012/06/20/4-ways-to-avoid-merge-commits-in-git/
 git config --global branch.autosetuprebase always
 
+# Ubuntu Desktop change
+http://askubuntu.com/questions/140742/how-do-i-change-the-desktop-name-on-the-unity-panel
