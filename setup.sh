@@ -90,3 +90,8 @@ git config --global branch.autosetuprebase always
 
 # Ubuntu Desktop change
 http://askubuntu.com/questions/140742/how-do-i-change-the-desktop-name-on-the-unity-panel
+
+# Ubuntu prevent desktop from showing with nautilus
+# http://www.brentwalther.net/blog/how-to-replace-unity-with-i3-window-manager-on-ubuntu-1204
+gsettings set org.gnome.desktop.background show-desktop-icons false
+
