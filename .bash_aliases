@@ -1,7 +1,3 @@
-# source scripts
-. /home/eric/.bash_profile                            	# GOROOT/GOPATH 
-. /home/eric/code/golang-crosscompile/crosscompile.bash	# Go cross-compiling
-
 # aliases
 alias ll='ls -alF'
 alias la='ls -A'
@@ -28,7 +24,7 @@ function virtualenv_info(){
     [[ -n "$venv" ]] && echo "[$venv] "
 }
 VENV="\$(virtualenv_info)";
-export PROMPT_COMMAND='history -a; history -c; history -r;__git_ps1 "\[$(tput setaf 2)\]\u@\h:\W\[$(tput sgr0)\]" " \[$(tput setaf 6)\]${VENV}\[$(tput setaf 2)\]\\$ \[$(tput sgr0)\]"'
+export PROMPT_COMMAND='history -a;__git_ps1 "\[$(tput setaf 2)\]\u@\h:\W\[$(tput sgr0)\]" " \[$(tput setaf 6)\]${VENV}\[$(tput setaf 2)\]\\$ \[$(tput sgr0)\]"'
 
 # functions
 function gitpending()
