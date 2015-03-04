@@ -24,7 +24,7 @@ gnome-chess gnome-clocks gnome-control-center gnome-control-center-data \
 gnome-control-center-dev gnome-desktop-data dia evolution evolution-ews file-roller \
 gnome-session gnome-settings-daemon gnome-panel evince gnomine gnome-font-viewer \
 gnome-hearts gnome-music gnome-nettool gnome-sushi gnome-system-tools ntp \
-gnome-media-profiles Polari scrot gcolor2
+gnome-media-profiles Polari scrot gcolor2 ack-grep
 
 # gnome-tweak tool settings
 Fonts : Hinting - Slight
@@ -46,6 +46,9 @@ sudo apt-get install qt4-qtconfig
 # http://cbowman57.deviantart.com/art/Adwaita-Dark-Gnome-Shell-3-14-481516328
 # sudo cp -rf gtk-2.0 /usr/share/themes/Adwaita
 # should take effect on next app restart
+#
+# in addition, configure gtk themes (2.0 and 3.0) using this tool:
+sudo apt-get install lxappearance # not taking affect yet though
 
 # utilities
 sudo apt-get install iotop nmon baobab
