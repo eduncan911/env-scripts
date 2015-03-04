@@ -5,6 +5,7 @@ alias l='ls -CF'
 alias nvlc='nvlc --no-color --browse-dir /media/sf_media/'
 alias nautilus='nautilus --no-desktop'
 alias files='nautilus --no-desktop'
+alias ack='ack-grep --color --passthru'
 
 # history
 HISTSIZE=1000000
@@ -85,4 +86,3 @@ function vol() {
   fi
   pactl set-sink-volume 0 -- "$1"% && pactl set-sink-mute 0 0
 }
-
