@@ -13,6 +13,16 @@ HISTFILESIZE=500000
 HISTTIMEFORMAT="%d/%m/%y %T "
 
 # color prompt w/Git: correct ANSI escapes: https://www.kirsle.net/wizards/ps1.html
+function set_titlebar {
+    case $TERM in
+        *xterm*|ansi|rxvt)
+            printf "\033]0;%s\007" "$*"
+            ;;
+    esac
+}
+function get_dir {
+    printf "%s" $(pwd | sed "s:$HOME/code/:/:" | sed "s:$HOME/go/src/github.com/:/:" | sed "s:$HOME/go/src/:/:" | sed "s:$HOME:~:" )
+}
 function virtualenv_info(){
     # Get Virtual Env
     if [[ -n "$VIRTUAL_ENV" ]]; then
@@ -25,7 +35,7 @@ function virtualenv_info(){
     [[ -n "$venv" ]] && echo "[$venv] "
 }
 VENV="\$(virtualenv_info)";
-export PROMPT_COMMAND='history -a;__git_ps1 "\[$(tput setaf 2)\]\u@\h:\W\[$(tput sgr0)\]" " \[$(tput setaf 6)\]${VENV}\[$(tput setaf 2)\]\\$ \[$(tput sgr0)\]"'
+export PROMPT_COMMAND='history -a;__git_ps1 "\[$(tput setaf 2)\]\u@\h:\W\[$(tput sgr0)\]" " \[$(tput setaf 6)\]${VENV}\[$(tput setaf 2)\]\\$ \[$(tput sgr0)\]"; set_titlebar "$(get_dir)"'
 
 # functions
 function gitpending()
