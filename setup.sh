@@ -95,8 +95,15 @@ git config --global branch.autosetuprebase always
 # https://github.com/scopatz/nanorc
 git clone git@github.com:scopatz/nanorc.git ~/.nano
 
+# Better fonts
+# http://www.webupd8.org/2013/06/better-font-rendering-in-linux-with.html
+
+# Increase the number of open files
+# http://stackoverflow.com/a/24796466
+# ^- be sure to read the one that links/highlights to
+
 # Ubuntu Desktop change
-http://askubuntu.com/questions/140742/how-do-i-change-the-desktop-name-on-the-unity-panel
+# http://askubuntu.com/questions/140742/how-do-i-change-the-desktop-name-on-the-unity-panel
 
 # Ubuntu prevent desktop from showing with nautilus
 # http://www.brentwalther.net/blog/how-to-replace-unity-with-i3-window-manager-on-ubuntu-1204
