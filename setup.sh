@@ -97,6 +97,8 @@ git clone git@github.com:scopatz/nanorc.git ~/.nano
 
 # Better fonts
 # http://www.webupd8.org/2013/06/better-font-rendering-in-linux-with.html
+sudo apt-get install fontconfig-infinality
+sudo bash /etc/fonts/infinality/infctl.sh setstyle osx
 
 # Increase the number of open files
 # http://stackoverflow.com/a/24796466
