@@ -17,6 +17,9 @@
 # instead, install the Windows 8.1 fonts!!!
 # http://www.webupd8.org/2013/07/how-to-download-and-install-windows-81.html
 # convert the Helvetica one using: http://onlinefontconverter.com/font?id=p1
+sudo apt-get install xfonts-100dpi
+sudo apt-get install fontconfig-infinality
+sudo bash /etc/fonts/infinality/infctl.sh setstyle osx
 
 # gnome apps
 sudo apt-get install gnome-tweak-tool gnome-system-log gucharmap gnome-packagekit \
@@ -94,11 +97,6 @@ git config --global branch.autosetuprebase always
 # Better nano (pico!) highlighting
 # https://github.com/scopatz/nanorc
 git clone git@github.com:scopatz/nanorc.git ~/.nano
-
-# Better fonts
-# http://www.webupd8.org/2013/06/better-font-rendering-in-linux-with.html
-sudo apt-get install fontconfig-infinality
-sudo bash /etc/fonts/infinality/infctl.sh setstyle osx
 
 # Increase the number of open files
 # http://stackoverflow.com/a/24796466
