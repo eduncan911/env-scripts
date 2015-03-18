@@ -102,6 +102,17 @@ git clone git@github.com:scopatz/nanorc.git ~/.nano
 # http://stackoverflow.com/a/24796466
 # ^- be sure to read the one that links/highlights to
 
+# perm mount windows shares
+# https://wiki.ubuntu.com/MountWindowsSharesPermanently
+sudo pico fstab
+# //172.16.1.20/movies  /media/hitoshi/movies  cifs  noauto,credentials=/home/eric/.smbmediacenter  0  0
+sudo ~/.smbmediacenter
+# username=username
+# password=password
+sudo mount /media/hitoshi/movies
+sudo mount /media/hitoshi/tv
+sudo mount /media/spock/scratch
+
 # Ubuntu Desktop change
 # http://askubuntu.com/questions/140742/how-do-i-change-the-desktop-name-on-the-unity-panel
 
