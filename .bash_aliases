@@ -9,7 +9,7 @@ alias ack='ack-grep --color --passthru'
 
 # history
 HISTSIZE=1000000
-HISTFILESIZE=500000
+HISTFILESIZE=2000000
 HISTTIMEFORMAT="%y-%m-%d %T "
 
 # color prompt w/Git: correct ANSI escapes: https://www.kirsle.net/wizards/ps1.html
