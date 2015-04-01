@@ -102,6 +102,13 @@ git clone git@github.com:scopatz/nanorc.git ~/.nano
 # http://stackoverflow.com/a/24796466
 # ^- be sure to read the one that links/highlights to
 
+# decrease swap, increase max files and file watch
+sudo echo "vm.swappiness=1\fs.file-max = 65536\fs.inotify.max_user_watches=100000" > /etc/sysctl.conf
+sudo sysctl -p
+
+# open terminal from cd
+# https://faq.i3wm.org/question/150/how-to-launch-a-terminal-from-here/
+
 # perm mount windows shares
 # https://wiki.ubuntu.com/MountWindowsSharesPermanently
 sudo pico fstab
