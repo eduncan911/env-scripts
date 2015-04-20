@@ -90,9 +90,13 @@ fi
 
 #If 64-bit ubuntu and ia32-libs is not installed
 if [ "$architecture" = "x86_64" ] && [ "$distro" = "Ubuntu" ] && [ ! -e "/usr/lib32/libGLU.so.1" ]; then
-    sudo apt-get install ia32-libs
+    #sudo apt-get install ia32-libs
+	echo 'ia32-libs not install. run: sudo apt-get install ia32-libs'
+	clean_up_err
 elif [ "$architecture" = "x86_64" ] && [ "$distro" = "Debian" ] && [ ! -d "/emul/ia32-linux" ]; then
-    sudo apt-get install ia32-libs
+    #sudo apt-get install ia32-libs
+	echo 'ia32-libs not install. run: sudo apt-get install ia32-libs'
+    clean_up_err
 fi
 
 if [ $# -lt 1 ]; then
