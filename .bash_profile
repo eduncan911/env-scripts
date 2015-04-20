@@ -15,3 +15,6 @@ export PROJECT_HOME=$HOME/code
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 . /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 
+# AWS credentials
+export AWS_CREDENTIAL_FILE=~/Documents/aws_credentials.txt
+
