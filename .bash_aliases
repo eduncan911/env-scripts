@@ -1,45 +1,35 @@
-# aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+#
+# ~/.bash_aliases
+#
+# Sourced from .bashrc for Interactive Bash sessions.
+
+# make possibly distructive commands more interactive
+#alias rm='rm -i'
+#alias mv='mv -i'
+#alias cp='cp -i'
+
+# more intuitive options, and add a touch of color
+alias pacman="pacmatic --color=auto"
+alias grep='grep --color=auto --exclude-dir=\.git --exclude-dir=\.svn'
+
+# more colors
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
+fi
+
+# general
 alias nvlc='nvlc --no-color --browse-dir /media/sf_media/'
 alias nautilus='nautilus --no-desktop'
 alias files='nautilus --no-desktop'
 alias ack='ack-grep --color --passthru'
 
-# history
-HISTSIZE=1000000
-HISTFILESIZE=2000000
-HISTTIMEFORMAT="%y-%m-%d %T "
-
-# color prompt w/Git: correct ANSI escapes: https://www.kirsle.net/wizards/ps1.html
-function set_titlebar {
-    case $TERM in
-        *xterm*|ansi|rxvt)
-            printf "\033]0;%s\007" "$*"
-            ;;
-    esac
-}
-function get_dir {
-    printf "%s" $(pwd | sed "s:$HOME/code/:/:" | sed "s:$HOME/go/src/github.com/:/:" | sed "s:$HOME/go/src/:/:" | sed "s:$HOME:~:" )
-}
-function virtualenv_info(){
-    # Get Virtual Env
-    if [[ -n "$VIRTUAL_ENV" ]]; then
-        # Strip out the path and just leave the env name
-        venv="${VIRTUAL_ENV##*/}"
-    else
-        # In case you don't have one activated
-        venv=''
-    fi
-    [[ -n "$venv" ]] && echo "[$venv] "
-}
-VENV="\$(virtualenv_info)";
-export PROMPT_COMMAND='history -a;__git_ps1 "\[$(tput setaf 2)\]\u@\h:\W\[$(tput sgr0)\]" " \[$(tput setaf 6)\]${VENV}\[$(tput setaf 2)\]\\$ \[$(tput sgr0)\]"; set_titlebar "$(get_dir)"'
-
-# functions
-function gitpending()
-{
+# gitpending will transverse directories 1 level deep looking for repos
+# with pending work
+function gitpending() {
   for d in */ ; do
     pushd $d > /dev/null
     DIRNAME=$(basename "$d")
@@ -52,8 +42,8 @@ function gitpending()
   done
 }
 
-function cpstat()
-{
+# cpstat returns the progress of the first found "cp" process 
+function cpstat() {
   local pid="${1:-$(pgrep -xn cp)}" src dst
   [[ "$pid" ]] || return
   while [[ -f "/proc/$pid/fd/3" ]]; do
@@ -87,6 +77,7 @@ function xrandr3() {
   xrandr --output Virtual3 --left-of Virtual2
 }
 
+# vol adjusts the volume
 function vol() {
   if [ "$1" = "" ]; then
     echo "Usage: vol 50"
@@ -96,3 +87,7 @@ function vol() {
   fi
   pactl set-sink-volume 0 -- "$1"% && pactl set-sink-mute 0 0
 }
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'

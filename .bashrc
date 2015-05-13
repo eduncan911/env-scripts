@@ -1,109 +1,40 @@
-source ~/.bash_profile
-
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
+#
+# ~/.bashrc
+#
+# Used for Interactive Bash sessions.  Bash aliases, setting favorite editor and bash prompt, etc.
 
 # If not running interactively, don't do anything
-case $- in
-    *i*) ;;
-      *) return;;
-esac
+[[ $- != *i* ]] && return
 
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
-HISTCONTROL=ignoreboth
+# enable bash aliases
+if [ -f ~/.bash_aliases ]; then
+  source ~/.bash_aliases
+fi
 
-# append to the history file, don't overwrite it
+# enable bash completion
+if [ -f /etc/bash_completion ]; then
+  source /etc/bash_completion
+fi
+
+# modify bash behavior
 shopt -s histappend
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
-
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000000
-HISTFILESIZE=500000
-HISTTIMEFORMAT="%d/%m/%y %T "
-
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
 shopt -s checkwinsize
+shopt -s cdspell
+shopt -s dirspell
+shopt -s cmdhist
 
-# If set, the pattern "**" used in a pathname expansion context will
-# match all files and zero or more directories and subdirectories.
-#shopt -s globstar
+# history: setting to unlimited
+HISTCONTROL=ignoreboth:ignoredups:erasedups
+HISTFILESIZE=
+HISTSIZE=
+HISTTIMEFORMAT="[%F %T] "
+HISTFILE=~/.bash_history_unlimited
 
 # make less more friendly for non-text input files, see lesspipe(1)
-#[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
-
-# set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-    xterm-color) color_prompt=yes;;
-esac
-
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
-#force_color_prompt=yes
-
-if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
-    else
-	color_prompt=
-    fi
-fi
-
-if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
-unset color_prompt force_color_prompt
-
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
-
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
-# some more ls aliases
-#alias ll='ls -l'
-#alias la='ls -A'
-#alias l='ls -CF'
-
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# enable programmable completion features (you dont need to enable
+# this, if its already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
@@ -113,77 +44,108 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# sort ls hidden files first
+LC_COLLATE="C"; export LC_COLLATE
 
-# Custom prompt w/Git & History
-# correct ANSI escapes: https://www.kirsle.net/wizards/ps1.html
-source ~/git-prompt.sh
-PROMPT_COMMAND='history -a;__git_ps1 "\[$(tput setaf 2)\]\u@\h \W\[$(tput sgr0)\]" "\[$(tput setaf 2)\] \\$ \[$(tput sgr0)\]"'
+# default editor
+EDITOR=nano; export EDITOR
 
-# Git helpers
-function gitpending()
-{
-  for d in */ ; do
-    pushd $d > /dev/null
-    DIRNAME=$(basename "$d")
+# source external scripts
+#source /usr/share/virtualenvwrapper/virtualenvwrapper.sh		# PROMPT: Python VirtualEnvWrapper
+source /home/eric/bin/posh-git-prompt.sh						# PROMPT: POSH-stype Git Prompt
+source /home/eric/code/golang-crosscompile/crosscompile.bash 	# GO: cross-compiling
 
-    if ! git diff-index --quiet HEAD --; then
-      echo $DIRNAME
+# color prompt w/Git: correct ANSI escapes: https://www.kirsle.net/wizards/ps1.html
+function __prompt_set_titlebar {
+    case $TERM in
+        *xterm*|ansi|rxvt)
+            #printf "\033]0;%s\007" "$*"
+            #printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/\~}"
+            printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "$*"
+            ;;
+    esac
+}
+function __prompt_get_dir {
+    printf "%s" $(pwd | sed "s:$HOME/code/:/:" | sed "s:$HOME/go/src/github.com/:/:" | sed "s:$HOME/go/src/:/:" | sed "s:$HOME:~:" )
+}
+function __prompt_virtualenv_info {
+    # Get Virtual Env
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+        # Strip out the path and just leave the env name
+        venv="${VIRTUAL_ENV##*/}"
+    else
+        # In case you don't have one activated
+        venv=''
     fi
-
-    popd > /dev/null
-  done
+    [[ -n "$venv" ]] && echo "[$venv] "
 }
-
-# Copy Progress
-function cpstat()
-{
-  local pid="${1:-$(pgrep -xn cp)}" src dst
-  [[ "$pid" ]] || return
-  while [[ -f "/proc/$pid/fd/3" ]]; do
-    read src dst < <(stat -L --printf '%s ' "/proc/$pid/fd/"{3,4})
-    (( src )) || break
-    printf 'cp %d%%\r' $((dst*100/src))
-    sleep 1
-  done
-  echo
+function __prompt_is_in_git_repo {
+    local repo_info="$(git rev-parse --git-dir --is-inside-git-dir \
+		--is-bare-repository --is-inside-work-tree \
+		--short HEAD 2>/dev/null)"
+    local rev_parse_exit_code="$?"
+    if [ -z "$repo_info" ]; then
+        return 1
+    elif [ "$rev_parse_exit_code" -ne "0" ]; then
+        return 1
+    else
+        return 0
+    fi
 }
-
-# Xrandr functions
-function xrandr1() {
-  #xrandr --output VBOX1 --off
-  xrandr --output Virtual1 --auto
-  xrandr --output Virtual2 --off
-  xrandr --output Virtual3 --off
-}
-function xrandr2() {
-  #xrandr --output VBOX1 --auto && xrandr --output VBOX1 --above VBOX0
-  xrandr --output Virtual1 --auto
-  xrandr --output Virtual2 --auto
-  xrandr --output Virtual3 --off
-  xrandr --output Virtual2 --above Virtual1
-}
-function xrandr3() { 
-  #xrandr --output VBOX1 --auto && xrandr --output VBOX2 --auto && xrandr --output VBOX1 --right-of VBOX0 && xrandr --output VBOX2 --left-of VBOX0
-  xrandr --output Virtual1 --auto
-  xrandr --output Virtual2 --auto
-  xrandr --output Virtual3 --auto
-  xrandr --output Virtual2 --left-of Virtual1
-  xrandr --output Virtual3 --left-of Virtual2
-}
-
-# volume control (since a lack thereof in i3)
-function vol() {
-  if [ "$1" = "" ]; then
-    echo "Usage: vol 50"
-    echo "       vol +10"
-    echo "       vol -5"
-    return
+function __prompt_fmt_time {
+  if [ '' = "PM" ]; then
+    meridiem="pm"
+  else
+    meridiem="am"
   fi
-  pactl set-sink-volume 0 -- "$1"% && pactl set-sink-mute 0 0
+  date +"%l:%M:%S$meridiem"|sed 's/ //g'
 }
 
-# Go cross-compiling functions
-source ~/code/golang-crosscompile/crosscompile.bash
+function __prompt_command {
+  local ERRORPROMPT=""
+  if [ $? -ne 0 ]; then 
+    ERRORPROMPT='$?' 
+  fi
 
-# monochrome vlc
-alias nvlc='nvlc --no-color --browse-dir /media/sf_media/'
+  local GITINFO=""
+  if [ __prompt_is_in_git_repo ]; then 
+    GITINFO="\$(__git_ps1 'pre' 'post' '')"
+  fi
+
+  local TIME=`__prompt_fmt_time`
+  
+  PROMPT_COMMAND='__git_ps1 \
+"`err=\$?; if [[ $err -ne "0" ]]; then echo "\[$(tput bold)\]\[$(tput setaf 1)\]└───("$err")───┘\[$(tput sgr0)\]\n"; fi`\
+\[$(tput bold)\]\[$(tput setaf 2)\]┌(\[$(tput setaf 7)\]\u@\h\[$(tput setaf 2)\])─(\[$(tput setaf 7)\]\j\[$(tput setaf 2)\])─(\[$(tput setaf 7)\]$(__prompt_fmt_time)\[$(tput setaf 2)\])" \
+"\n\[$(tput bold)\]\[$(tput setaf 2)\]└(\[$(tput setaf 7)\]\w\[$(tput setaf 2)\])─(\[$(tput setaf 7)\]`(/bin/ls -1 | /usr/bin/wc -l | /bin/sed "s: ::g")` files, `(/bin/ls -lah | /bin/grep -m 1 total | /bin/sed "s/total //")`b\[$(tput setaf 2)\]) \[$(tput setaf 7)\]\$ \[$(tput sgr0)\]" \
+"\[$(tput bold)\]\[$(tput setaf 2)\]─(\[$(tput sgr0)\]%s\[$(tput setaf 2)\])\[$(tput sgr0)\]";\
+__prompt_set_titlebar "$(__prompt_get_dir)";\
+history -a'
+  export PROMPT_COMMAND
+}
+
+#PS1='[\u@\h \W]\$ '
+PS2='> '
+PS3='> '
+PS4='+ '
+case ${TERM} in
+    xterm*|rxvt*|Eterm|aterm|kterm|gnome*)
+        #VENV="\$(__virtualenv_info)"
+        #PROMPT_COMMAND='history -a;__git_ps1 "\[$(tput setaf 2)\]\u@\h:\W\[$(tput sgr0)\]" " \[$(tput setaf 6)\]${VENV}\[$(tput setaf 2)\]\\$ \[$(tput sgr0)\]"; __set_titlebar "$(__get_dir)"'
+        GIT_PS1_SHOWUPSTREAM="auto"
+        PROMPT_COMMAND=__prompt_command
+        unset VENV
+        ;;
+    screen)
+    	# TODO: change to a unique color for screens
+        #VENV="\$(__virtualenv_info)"
+        GIT_PS1_SHOWUPSTREAM="auto"
+        PROMPT_COMMAND=__prompt_command
+        unset VENV
+        ;;
+    *)
+       [ -e /etc/sysconfig/bash-prompt-default ] && PROMPT_COMMAND=/etc/sysconfig/bash-prompt-default
+       ;;
+esac
+
+

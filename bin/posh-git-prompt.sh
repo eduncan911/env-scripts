@@ -320,7 +320,7 @@ __git_ps1 ()
     local gitstring=
     local branchstring="$isBare${b##refs/heads/}"
     # before-branch text
-    gitstring="\[$BeforeBackgroundColor\]\[$BeforeForegroundColor\]$BeforeText"
+    #gitstring="\[$BeforeBackgroundColor\]\[$BeforeForegroundColor\]$BeforeText"
 
     # branch
     if [ $behindBy -gt 0 ] && [ $aheadBy -gt 0 ]; then
@@ -362,7 +362,7 @@ __git_ps1 ()
 
 
     # after-branch text
-    gitstring+="\[$AfterBackgroundColor\]\[$AfterForegroundColor\]$AfterText"
+    #gitstring+="\[$AfterBackgroundColor\]\[$AfterForegroundColor\]$AfterText"
 
     if $ShowStashState; then
         gitstring+="\[$StashBackgroundColor\]\[$StashForegroundColor\]"$StashText
