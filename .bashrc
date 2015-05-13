@@ -100,8 +100,16 @@ function __prompt_fmt_time {
   fi
   date +"%l:%M:%S$meridiem"|sed 's/ //g'
 }
-
+function __prompt_pwd {
+  pwd | awk -F\/ '{print $(NF-1),$(NF)}' | sed 's/ /\//'
+}
 function __prompt_command {
+
+  __PROMPT_COLOR_NORMAL="\[$(tput sgr0)\]\[$(tput setaf 8)\]"
+  __PROMPT_COLOR_TEXT="\[$(tput setaf 15)\]"
+  __PROMPT_COLOR_ERROR="\[$(tput setaf 1)\]"
+  __PROMPT_COLOR_RESET="\[$(tput sgr0)\]"
+
   local ERRORPROMPT=""
   if [ $? -ne 0 ]; then 
     ERRORPROMPT='$?' 
@@ -115,13 +123,13 @@ function __prompt_command {
   local TIME=`__prompt_fmt_time`
   
   PROMPT_COMMAND='__git_ps1 \
-"`err=\$?; if [[ $err -ne "0" ]]; then echo "\[$(tput bold)\]\[$(tput setaf 1)\]└───("$err")───┘\[$(tput sgr0)\]\n"; fi`\
-\[$(tput bold)\]\[$(tput setaf 2)\]┌(\[$(tput setaf 7)\]\u@\h\[$(tput setaf 2)\])─(\[$(tput setaf 7)\]\j\[$(tput setaf 2)\])─(\[$(tput setaf 7)\]$(__prompt_fmt_time)\[$(tput setaf 2)\])" \
-"\n\[$(tput bold)\]\[$(tput setaf 2)\]└(\[$(tput setaf 7)\]\w\[$(tput setaf 2)\])─(\[$(tput setaf 7)\]`(/bin/ls -1 | /usr/bin/wc -l | /bin/sed "s: ::g")` files, `(/bin/ls -lah | /bin/grep -m 1 total | /bin/sed "s/total //")`b\[$(tput setaf 2)\]) \[$(tput setaf 7)\]\$ \[$(tput sgr0)\]" \
-"\[$(tput bold)\]\[$(tput setaf 2)\]─(\[$(tput sgr0)\]%s\[$(tput setaf 2)\])\[$(tput sgr0)\]";\
+"`err=\$?; if [[ $err -ne "0" ]]; then echo $__PROMPT_COLOR_ERROR"└─────("$err")─────┘"$__PROMPT_COLOR_RESET"\n"; fi`\
+$__PROMPT_COLOR_NORMAL┌($__PROMPT_COLOR_TEXT$(__prompt_fmt_time)$__PROMPT_COLOR_NORMAL)$__PROMPT_COLOR_RESET" \
+"\n$__PROMPT_COLOR_NORMAL└($__PROMPT_COLOR_TEXT\u@\h$__PROMPT_COLOR_NORMAL)─($__PROMPT_COLOR_TEXT$(__prompt_pwd 3)$__PROMPT_COLOR_NORMAL) $__PROMPT_COLOR_RESET\$ " \
+"$__PROMPT_COLOR_NORMAL─($__PROMPT_COLOR_RESET%s$__PROMPT_COLOR_NORMAL)$__PROMPT_COLOR_RESET";\
 __prompt_set_titlebar "$(__prompt_get_dir)";\
 history -a'
-  export PROMPT_COMMAND
+  
 }
 
 #PS1='[\u@\h \W]\$ '
@@ -147,5 +155,6 @@ case ${TERM} in
        [ -e /etc/sysconfig/bash-prompt-default ] && PROMPT_COMMAND=/etc/sysconfig/bash-prompt-default
        ;;
 esac
+__prompt_command
 
 
