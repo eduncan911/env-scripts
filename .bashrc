@@ -101,7 +101,7 @@ function __prompt_fmt_time {
   date +"%l:%M:%S$meridiem"|sed 's/ //g'
 }
 function __prompt_pwd {
-  pwd | awk -F\/ '{print $(NF-1),$(NF)}' | sed 's/ /\//'
+  pwd | awk -F\/ '{print $(NF-1),$(NF)}' | sed 's/ /\//' | sed 's/home\/eric/~/' | sed 's/eric\//~\//'
 }
 function __prompt_command {
 
@@ -125,7 +125,7 @@ function __prompt_command {
   PROMPT_COMMAND='__git_ps1 \
 "`err=\$?; if [[ $err -ne "0" ]]; then echo $__PROMPT_COLOR_ERROR"└─────("$err")─────┘"$__PROMPT_COLOR_RESET"\n"; fi`\
 $__PROMPT_COLOR_NORMAL┌($__PROMPT_COLOR_TEXT$(__prompt_fmt_time)$__PROMPT_COLOR_NORMAL)$__PROMPT_COLOR_RESET" \
-"\n$__PROMPT_COLOR_NORMAL└($__PROMPT_COLOR_TEXT\u@\h$__PROMPT_COLOR_NORMAL)─($__PROMPT_COLOR_TEXT$(__prompt_pwd 3)$__PROMPT_COLOR_NORMAL) $__PROMPT_COLOR_RESET\$ " \
+"\n$__PROMPT_COLOR_NORMAL└($__PROMPT_COLOR_TEXT\u@\h$__PROMPT_COLOR_NORMAL)─($__PROMPT_COLOR_TEXT\w$__PROMPT_COLOR_NORMAL) $__PROMPT_COLOR_RESET\$ " \
 "$__PROMPT_COLOR_NORMAL─($__PROMPT_COLOR_RESET%s$__PROMPT_COLOR_NORMAL)$__PROMPT_COLOR_RESET";\
 __prompt_set_titlebar "$(__prompt_get_dir)";\
 history -a'
