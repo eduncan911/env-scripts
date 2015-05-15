@@ -93,7 +93,7 @@ function __prompt_is_in_git_repo {
     fi
 }
 function __prompt_fmt_time {
-  if [ '' = "PM" ]; then
+  if [ `date +%p` = "PM" ]; then
     meridiem="pm"
   else
     meridiem="am"
