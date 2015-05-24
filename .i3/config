@@ -299,6 +299,7 @@ exec --no-startup-id /usr/lib64/gnome-settings-daemon/gnome-settings-daemon-loca
 exec --no-startup-id compton -Cb --config ~/.i3/compton.conf # -CGb
 
 # exec on every i3 restart
+exec_always --no-startup-id xrdb ~/.Xresources
 exec_always --no-startup-id xset -dpms && xset s off
 exec_always --no-startup-id xset r rate 200 40
 exec_always --no-startup-id feh --bg-scale $bgimage

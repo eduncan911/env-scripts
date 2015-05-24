@@ -105,8 +105,8 @@ function __prompt_pwd {
 }
 function __prompt_command {
 
-  __PROMPT_COLOR_NORMAL="\[$(tput sgr0)\]\[$(tput setaf 8)\]"
-  __PROMPT_COLOR_TEXT="\[$(tput setaf 15)\]"
+  __PROMPT_COLOR_NORMAL="\[$(tput sgr0)\]\[$(tput setaf 2)\]"
+  __PROMPT_COLOR_TEXT="\[$(tput setaf 7)\]"
   __PROMPT_COLOR_ERROR="\[$(tput setaf 1)\]"
   __PROMPT_COLOR_RESET="\[$(tput sgr0)\]"
 

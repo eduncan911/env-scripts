@@ -29,7 +29,11 @@ export PATH
 
 # setup a terminal (i3's sensible terminal)
 TERMINAL=/usr/bin/gnome-terminal
+TERM=xterm-256color
+#TERM=rxvt-unicode-256color
 export TERMINAL
+export TERM
+eval `dircolors ~/.dircolors`
 
 # setup Gnome's settings and keyring
 export $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)

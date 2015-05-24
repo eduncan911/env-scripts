@@ -85,7 +85,7 @@ function vol() {
     echo "       vol -5"
     return
   fi
-  pactl set-sink-volume 0 -- "$1"% && pactl set-sink-mute 0 0
+  pactl set-sink-volume 0 "$1"% && pactl set-sink-mute 0 0
 }
 
 # Add an "alert" alias for long running commands.  Use like so:
