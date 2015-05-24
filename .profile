@@ -26,3 +26,10 @@ PATH="$PATH:$GOROOT/bin:$GOPATH/bin"
 
 # since PATH was modified several times, export it here
 export PATH
+
+# setup a terminal (i3's sensible terminal)
+TERMINAL=/usr/bin/gnome-terminal
+export TERMINAL
+
+# setup Gnome's settings and keyring
+export $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)
