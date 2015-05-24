@@ -98,30 +98,30 @@ __git_ps1 ()
     local DefaultBackgroundColor=
 
     local BeforeText=' ['
-    local BeforeForegroundColor='\e[1;33m' # Yellow
+    local BeforeForegroundColor='\e[0;33m' # Dark Yellow
     local BeforeBackgroundColor=
     local DelimText=' |'
-    local DelimForegroundColor='\e[1;33m' # Yellow
+    local DelimForegroundColor='\e[0;33m' # Dark Yellow
     local DelimBackgroundColor=
 
     local AfterText=']'
-    local AfterForegroundColor='\e[1;33m' # Yellow
+    local AfterForegroundColor='\e[0;33m' # Dark Yellow
     local AfterBackgroundColor=
 
-    local BranchForegroundColor='\e[1;36m' # Cyan
+    local BranchForegroundColor='\e[0;36m' # Dark Cyan
     local BranchBackgroundColor=
-    local BranchAheadForegroundColor='\e[1;32m' # Green
+    local BranchAheadForegroundColor='\e[0;34m' # Dark Blue
     local BranchAheadBackgroundColor=
-    local BranchBehindForegroundColor='\e[0;31m' # Red
+    local BranchBehindForegroundColor='\e[0;35m' # Dark Magenta
     local BranchBehindBackgroundColor=
-    local BranchBehindAndAheadForegroundColor='\e[1;33m' # Yellow
+    local BranchBehindAndAheadForegroundColor='\e[1;31m' # Bright Red
     local BranchBehindAndAheadBackgroundColor=
 
     local BeforeIndexText=""
-    local BeforeIndexForegroundColor='\e[1;32m' #Dark green
+    local BeforeIndexForegroundColor='\e[0;32m' #Dark green
     local BeforeIndexBackgroundColor=
 
-    local IndexForegroundColor='\e[1;32m' # Dark green
+    local IndexForegroundColor='\e[0;32m' # Dark green
     local IndexBackgroundColor=
 
     local WorkingForegroundColor='\e[0;31m' # Dark red
