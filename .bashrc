@@ -65,6 +65,8 @@ function __prompt_set_titlebar {
             ;;
     esac
 }
+# rvm stuff
+#[[ -r "$HOME/.rvm/scripts/completion" ]] && source "$HOME/.rvm/scripts/completion"
 function __prompt_get_dir {
     printf "%s" $(pwd | sed "s:$HOME/code/:/:" | sed "s:$HOME/go/src/github.com/:/:" | sed "s:$HOME/go/src/:/:" | sed "s:$HOME:~:" )
 }
@@ -107,7 +109,7 @@ function __prompt_command {
 
   __PROMPT_COLOR_NORMAL="\[$(tput sgr0)\]\[$(tput setaf 2)\]"
   __PROMPT_COLOR_TEXT="\[$(tput setaf 7)\]"
-  __PROMPT_COLOR_ERROR="\[$(tput setaf 1)\]"
+  __PROMPT_COLOR_ERROR="\[$(tput setaf 9)\]"
   __PROMPT_COLOR_RESET="\[$(tput sgr0)\]"
 
   local ERRORPROMPT=""
@@ -156,5 +158,3 @@ case ${TERM} in
        ;;
 esac
 __prompt_command
-
-

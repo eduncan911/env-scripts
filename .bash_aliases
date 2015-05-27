@@ -25,7 +25,7 @@ fi
 alias nvlc='nvlc --no-color --browse-dir /media/sf_media/'
 alias nautilus='nautilus --no-desktop'
 alias files='nautilus --no-desktop'
-alias ack='ack-grep --color --passthru'
+alias ack='ack --color --passthru'
 
 # gitpending will transverse directories 1 level deep looking for repos
 # with pending work
@@ -74,7 +74,7 @@ function xrandr3() {
   xrandr --output Virtual2 --auto
   xrandr --output Virtual3 --auto
   xrandr --output Virtual2 --left-of Virtual1
-  xrandr --output Virtual3 --left-of Virtual2
+  xrandr --output Virtual3 --right-of Virtual1
 }
 
 # vol adjusts the volume
