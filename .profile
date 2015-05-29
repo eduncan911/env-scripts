@@ -7,16 +7,14 @@
 # Path
 PATH="$HOME/bin:$PATH"
 
-# Ruby
-#PATH="$HOME/.rbenv/bin:$PATH"
-#eval "$(rbenv init -)"
-PATH="$HOME/.rvm/bin:$PATH"
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+# Ruby rbenv
+[[ -d "$HOME/.rbenv" ]] && PATH="$HOME/.rbenv/bin:$PATH"
 
 # Python
-#WORKON_HOME=$HOME/.virtualenvs; export WORKON_HOME
-#PROJECT_HOME=$HOME/code; export PROJECT_HOME
-#VIRTUAL_ENV_DISABLE_PROMPT=1; export VIRTUAL_ENV_DISABLE_PROMPT
+WORKON_HOME=$HOME/.virtualenvs; export WORKON_HOME
+PROJECT_HOME=$HOME/code; export PROJECT_HOME
+VIRTUAL_ENV_DISABLE_PROMPT=1; export VIRTUAL_ENV_DISABLE_PROMPT
+#VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 
 # GO stuff
 GOPATH="$HOME/go"; export GOPATH
@@ -36,7 +34,7 @@ TERM=xterm-256color
 #TERM=rxvt-unicode-256color
 export TERMINAL
 export TERM
-eval `dircolors ~/.dircolors`
+[[ -s "/usr/bin/dircolors" ]] && eval `dircolors ~/.dircolors`
 
 # setup Gnome's settings and keyring
 export $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)

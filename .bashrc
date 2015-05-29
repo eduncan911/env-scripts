@@ -51,9 +51,10 @@ LC_COLLATE="C"; export LC_COLLATE
 EDITOR=nano; export EDITOR
 
 # source external scripts
-#source /usr/share/virtualenvwrapper/virtualenvwrapper.sh		# PROMPT: Python VirtualEnvWrapper
-source /home/eric/bin/posh-git-prompt.sh						# PROMPT: POSH-stype Git Prompt
-source /home/eric/code/golang-crosscompile/crosscompile.bash 	# GO: cross-compiling
+#[[ -d "$HOME/code/golang-crosscompile/crosscompile.bash " ]] && source /home/eric/code/golang-crosscompile/crosscompile.bash    # GO: cross-compiling
+[[ -s "/usr/bin/virtualenvwrapper.sh" ]] && source /usr/bin/virtualenvwrapper.sh    	# PROMPT: Python VirtualEnvWrapper
+[[ -s "$HOME/bin/posh-git-prompt.sh" ]] && source /home/eric/bin/posh-git-prompt.sh		# PROMPT: POSH-stype Git Prompt
+[[ -d "$HOME/.rbenv" ]] && eval "$(rbenv init -)"	# Ruby rbenv
 
 # color prompt w/Git: correct ANSI escapes: https://www.kirsle.net/wizards/ps1.html
 function __prompt_set_titlebar {
@@ -79,7 +80,7 @@ function __prompt_virtualenv_info {
         # In case you don't have one activated
         venv=''
     fi
-    [[ -n "$venv" ]] && echo "[$venv] "
+    [[ -n "$venv" ]] && echo "─($venv)"
 }
 function __prompt_is_in_git_repo {
     local repo_info="$(git rev-parse --git-dir --is-inside-git-dir \
@@ -126,7 +127,7 @@ function __prompt_command {
   
   PROMPT_COMMAND='__git_ps1 \
 "`err=\$?; if [[ $err -ne "0" ]]; then echo $__PROMPT_COLOR_ERROR"└─────("$err")─────┘"$__PROMPT_COLOR_RESET"\n"; fi`\
-$__PROMPT_COLOR_NORMAL┌($__PROMPT_COLOR_TEXT$(__prompt_fmt_time)$__PROMPT_COLOR_NORMAL)$__PROMPT_COLOR_RESET" \
+$__PROMPT_COLOR_NORMAL┌($__PROMPT_COLOR_TEXT$(__prompt_fmt_time)$__PROMPT_COLOR_NORMAL)$venv$__PROMPT_COLOR_RESET" \
 "\n$__PROMPT_COLOR_NORMAL└($__PROMPT_COLOR_TEXT\u@\h$__PROMPT_COLOR_NORMAL)─($__PROMPT_COLOR_TEXT\w$__PROMPT_COLOR_NORMAL) $__PROMPT_COLOR_RESET\$ " \
 "$__PROMPT_COLOR_NORMAL─($__PROMPT_COLOR_RESET%s$__PROMPT_COLOR_NORMAL)$__PROMPT_COLOR_RESET";\
 __prompt_set_titlebar "$(__prompt_get_dir)";\
