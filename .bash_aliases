@@ -10,7 +10,7 @@
 
 # more intuitive options, and add a touch of color
 alias pacman="pacmatic --color=auto"
-alias grep='grep --color=auto --exclude-dir=\.git --exclude-dir=\.svn'
+alias grep='grep --color=auto --exclude-dir=\.git --exclude-dir=\.svn --exclude-dir=\.cache'
 
 # more colors
 # enable color support of ls and also add handy aliases
