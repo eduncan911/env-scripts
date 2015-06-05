@@ -265,6 +265,7 @@ for_window [title="Preferences$"] floating enable
 for_window [class="Gnome-terminal" window_role="gnome-terminal-window(.*)?"] border 1pixel
 for_window [class="Google-chrome" window_role="browser"] floating disable, border none
 for_window [class="Google-chrome" window_role="app"] floating disable
+for_window [class="Chromium" window_role="browser"] floating disable, border none
 for_window [class="Subl3" title="Sublime Text$"] border none, floating disable
 for_window [class="Subl3" title="^((?!Sublime Text).)*$"] border 1pixel, floating enable
 #for_window [class="Nautilus"] floating enable
@@ -284,6 +285,7 @@ for_window [class="Vlc" window_role="vlc-main"] floating disable
 assign [class="Gimp"] → $wsp0 
 assign [class="Subl3" title="Sublime Text$"] → $wsp2
 assign [class="Google-chrome" window_role="browser"] → $wsp4
+assign [class="Chromium" window_role="browser"] → $wsp5
 assign [class="HipChat"] → $wsp6
 assign [class="Mysql-workbench-bin"] → $wsp7
 assign [class="Pgadmin3"] → $wsp7
