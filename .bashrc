@@ -66,8 +66,6 @@ function __prompt_set_titlebar {
             ;;
     esac
 }
-# rvm stuff
-#[[ -r "$HOME/.rvm/scripts/completion" ]] && source "$HOME/.rvm/scripts/completion"
 function __prompt_get_dir {
     printf "%s" $(pwd | sed "s:$HOME/code/:/:" | sed "s:$HOME/go/src/github.com/:/:" | sed "s:$HOME/go/src/:/:" | sed "s:$HOME:~:" )
 }
@@ -80,7 +78,10 @@ function __prompt_virtualenv_info {
         # In case you don't have one activated
         venv=''
     fi
-    [[ -n "$venv" ]] && echo "─($venv)"
+    [[ -n "$venv" ]] && echo "$__PROMPT_COLOR_NORMAL[$__PROMPT_COLOR_ENV_COLOR$venv$__PROMPT_COLOR_NORMAL]"
+}
+function __prompt_rbenv_info {
+	[[ -n "$RBENV_VERSION" ]] && echo "$__PROMPT_COLOR_NORMAL[$__PROMPT_COLOR_ENV_COLOR$RBENV_VERSION$__PROMPT_COLOR_NORMAL]"
 }
 function __prompt_is_in_git_repo {
     local repo_info="$(git rev-parse --git-dir --is-inside-git-dir \
@@ -110,6 +111,7 @@ function __prompt_command {
 
   __PROMPT_COLOR_NORMAL="\[$(tput sgr0)\]\[$(tput setaf 2)\]"
   __PROMPT_COLOR_TEXT="\[$(tput setaf 7)\]"
+  __PROMPT_COLOR_ENV_COLOR="\[$(tput setaf 3)\]"
   __PROMPT_COLOR_ERROR="\[$(tput setaf 9)\]"
   __PROMPT_COLOR_RESET="\[$(tput sgr0)\]"
 
@@ -126,10 +128,10 @@ function __prompt_command {
   local TIME=`__prompt_fmt_time`
   
   PROMPT_COMMAND='__git_ps1 \
-"`err=\$?; if [[ $err -ne "0" ]]; then echo $__PROMPT_COLOR_ERROR"└─────("$err")─────┘"$__PROMPT_COLOR_RESET"\n"; fi`\
-$__PROMPT_COLOR_NORMAL┌($__PROMPT_COLOR_TEXT\u@\h$__PROMPT_COLOR_NORMAL)─($__PROMPT_COLOR_TEXT\w$__PROMPT_COLOR_NORMAL)$(__prompt_virtualenv_info)$__PROMPT_COLOR_RESET" \
-"\n$__PROMPT_COLOR_NORMAL└($__PROMPT_COLOR_TEXT\$$__PROMPT_COLOR_NORMAL)$__PROMPT_COLOR_RESET " \
-"$__PROMPT_COLOR_NORMAL─($__PROMPT_COLOR_RESET%s$__PROMPT_COLOR_NORMAL)$__PROMPT_COLOR_RESET";\
+"`err=\$?; if [[ $err -ne "0" ]]; then echo $__PROMPT_COLOR_ERROR"\n└─────("$err")─────┘"$__PROMPT_COLOR_RESET"\n"; fi`\
+\n$__PROMPT_COLOR_NORMAL┌[$__PROMPT_COLOR_TEXT\u@\h$__PROMPT_COLOR_NORMAL][$__PROMPT_COLOR_TEXT\w$__PROMPT_COLOR_NORMAL]$__PROMPT_COLOR_RESET" \
+"$(__prompt_rbenv_info)$(__prompt_virtualenv_info)\n$__PROMPT_COLOR_NORMAL└[$__PROMPT_COLOR_TEXT\$$__PROMPT_COLOR_RESET " \
+"$__PROMPT_COLOR_NORMAL[$__PROMPT_COLOR_RESET%s$__PROMPT_COLOR_NORMAL]$__PROMPT_COLOR_RESET";\
 __prompt_set_titlebar "$(__prompt_get_dir)";\
 history -a'
   
