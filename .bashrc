@@ -78,10 +78,10 @@ function __prompt_virtualenv_info {
         # In case you don't have one activated
         venv=''
     fi
-    [[ -n "$venv" ]] && echo "$__PROMPT_COLOR_NORMAL[$__PROMPT_COLOR_ENV_COLOR$venv$__PROMPT_COLOR_NORMAL]"
+    [[ -n "$venv" ]] && echo "$__PROMPT_COLOR_NORMAL[py:$__PROMPT_COLOR_ENV_COLOR$venv$__PROMPT_COLOR_NORMAL]"
 }
 function __prompt_rbenv_info {
-	[[ -n "$RBENV_VERSION" ]] && echo "$__PROMPT_COLOR_NORMAL[$__PROMPT_COLOR_ENV_COLOR$RBENV_VERSION$__PROMPT_COLOR_NORMAL]"
+	[[ -n "$RBENV_VERSION" ]] && echo "$__PROMPT_COLOR_NORMAL[rb:$__PROMPT_COLOR_ENV_COLOR$RBENV_VERSION$__PROMPT_COLOR_NORMAL]"
 }
 function __prompt_is_in_git_repo {
     local repo_info="$(git rev-parse --git-dir --is-inside-git-dir \
