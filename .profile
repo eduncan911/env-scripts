@@ -38,3 +38,6 @@ export TERM
 
 # setup Gnome's settings and keyring
 export $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)
+
+# swap ThinkPad's end/insert sillyness
+source ~/bin/thinkpad-end-insert-swap.sh
