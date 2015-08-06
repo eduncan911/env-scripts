@@ -1,0 +1,6 @@
+#!/bin/bash
+
+VPN=$1
+
+sudo openvpn --config /home/eric/.openvpn/$VPN.ovpn --writepid /var/run/openvpn.$VPN.pid --log /var/log/openvpn-$VPN.log &
+
