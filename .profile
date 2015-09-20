@@ -37,4 +37,4 @@ export TERM
 [[ -s "/usr/bin/dircolors" ]] && eval `dircolors ~/.dircolors`
 
 # setup Gnome's settings and keyring
-export $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)
+#export $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)
