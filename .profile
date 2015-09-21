@@ -25,7 +25,7 @@ PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
 export PATH
 
 # AWS credentials
-AWS_CREDENTIAL_FILE=~/Documents/aws_credentials.txt
+AWS_CREDENTIAL_FILE=~/.aws/triggit.txt
 export AWS_CREDENTIAL_FILE
 
 # setup a terminal (i3's sensible terminal)
