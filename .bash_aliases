@@ -28,6 +28,8 @@ alias files='nautilus --no-desktop'
 alias ack='ack --color --passthru'
 alias setclip='xclip -selection c'
 alias getclip='xclip -selection clipboard -o'
+alias diskusage='du -h --max-depth=1 2> /dev/null | sort -n -r | head -n10'
+alias diskspace='du -h --max-depth=1 2> /dev/null | sort -n -r | head -n10'
 
 # gitpending will transverse directories 1 level deep looking for repos
 # with pending work
