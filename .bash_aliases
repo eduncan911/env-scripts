@@ -28,6 +28,7 @@ alias files='nautilus --no-desktop'
 alias ack='ack --color --passthru'
 alias setclip='xclip -selection c'
 alias getclip='xclip -selection clipboard -o'
+alias dvtmd='dtach -A /tmp/dvtm-session -r winch dvtm'
 
 # gitpending will transverse directories 1 level deep looking for repos
 # with pending work
