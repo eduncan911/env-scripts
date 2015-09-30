@@ -27,7 +27,7 @@ set $wsp6 "6-CHAT"
 set $wsp7 "7-SQL"
 set $wsp8 "8-TTY"
 set $wsp9 "9-MAIL"
-set $wsp0 "0-GIMP"
+set $wsp0 "0-UML"
 set $bgimage ~/Pictures/2880x1800-forest-fam.jpg
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -279,6 +279,7 @@ for_window [class="(Evolution|Mail)" title="Evolution$"] floating disable, borde
 #for_window [class="(Evolution|Mail)" window_role="EShellWindow-(.*)?"] floating enable
 for_window [class="Gimp" window_role="gimp-image-window"] floating disable
 for_window [class="Vlc" window_role="vlc-main"] floating disable
+for_window [title="Gliffy Diagrams*"] floating disable, border none
 
 # assign screens
 assign [class="Gimp"] → $wsp0 
@@ -290,6 +291,7 @@ assign [class="Mysql-workbench-bin"] → $wsp7
 assign [class="Pgadmin3"] → $wsp7
 assign [class="Iceweasel"] → $wsp5
 assign [class="(Evolution|Mail)"] → $wsp9
+assign [title="Gliffy Diagrams*"] → $wsp0
 
 # exec once
 exec --no-startup-id /usr/bin/vmware-user-suid-wrapper
