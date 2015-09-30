@@ -16,6 +16,11 @@ if [ -f /etc/bash_completion ]; then
   source /etc/bash_completion
 fi
 
+# enable solarized TTY support
+if [ -f ~/scripts/tty-solarized/tty-solarized-dark.sh ]; then
+  source ~/scripts/tty-solarized/tty-solarized-dark.sh
+fi
+
 # modify bash behavior
 shopt -s histappend
 shopt -s checkwinsize
