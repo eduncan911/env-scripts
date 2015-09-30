@@ -294,6 +294,7 @@ assign [class="(Evolution|Mail)"] → $wsp9
 
 # exec once
 exec --no-startup-id /usr/bin/vmware-user-suid-wrapper
+exec --no-startup-id /usr/bin/vmware-user
 exec --no-startup-id /usr/lib64/gnome-settings-daemon/gnome-settings-daemon-localeexec &
 #exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg # /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id compton -Cb --config ~/.i3/compton.conf --paint-on-overlay # -CGb
