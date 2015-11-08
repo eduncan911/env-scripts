@@ -1,7 +1,10 @@
 # used to set custom vga modes in multi-user targets
+# usage: sudo vga.sh 1440 900
 
+w=$1
+h=$2
 if [ "$1" = "" ]; then
-  echo "usage: vga 1440 900"
-  return
+	w=1680
+	h=1050
 fi
-fbset -g $1 $2 $1 $2 32
+fbset -g $w $h $w $h 32
