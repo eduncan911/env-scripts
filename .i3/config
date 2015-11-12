@@ -333,7 +333,7 @@ exec --no-startup-id /usr/lib64/gnome-settings-daemon/gnome-settings-daemon &
 # exec on every i3 restart
 exec_always --no-startup-id xrdb ~/.Xresources
 #exec_always --no-startup-id xset -dpms && xset s off
-exec_always --no-startup-id xset r rate 200 100
+exec_always --no-startup-id xset r rate 400 60
 exec_always --no-startup-id feh --bg-scale $bgimage
 #exec_always --no-startup-id pactl set-sink-volume 0 -- 100% && pactl set-sink-mute 0 0
 #exec_always --no-startup-id nitrogen --restore
