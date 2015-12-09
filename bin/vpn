@@ -2,5 +2,25 @@
 
 VPN=$1
 
-sudo openvpn --config /home/eric/.openvpn/$VPN.ovpn --writepid /var/run/openvpn.$VPN.pid --log /var/log/openvpn-$VPN.log &
+if [ -z "$1" ]; then
+  echo "Need to pass which you want to connect to:"
+  echo "  sudo vpn triggit"
+  echo "  sudo vpn g4"
+  exit 1
+fi
+
+if [ "$1" == "triggit" ]; then
+  sudo openvpn --config /home/eric/.openvpn/$VPN.ovpn --writepid /var/run/openvpn.$VPN.pid --log /var/log/openvpn-$VPN.log &
+  exit 0
+fi
+
+if [ "$1" == "g4" ]; then
+  sudo vpnc /etc/vpnc/gravity4.conf
+  exit 0
+fi
+
+echo "'$1' was not found. Valid options are:"
+echo "  sudo vpn triggit"
+echo "  sudo vpn g4"
+exit 1
 
