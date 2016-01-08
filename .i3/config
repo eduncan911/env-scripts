@@ -297,7 +297,7 @@ assign [title="Gliffy Diagrams*"] → $wsp0
 exec --no-startup-id /usr/bin/vmware-user-suid-wrapper
 exec --no-startup-id /usr/lib64/gnome-settings-daemon/gnome-settings-daemon-localeexec &
 #exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg # /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id compton -Cb --config ~/.i3/compton.conf --paint-on-overlay # -CGb
+#exec --no-startup-id compton -Cb --config ~/.i3/compton.conf --paint-on-overlay # -CGb
 
 # exec on every i3 restart
 exec_always --no-startup-id xrdb ~/.Xresources
@@ -312,4 +312,3 @@ exec_always --no-startup-id feh --bg-scale $bgimage
 
 # setup workstation
 exec --no-startup-id i3-msg 'workspace $wsp1; exec i3-sensible-terminal; workspace $wsp1'
-
