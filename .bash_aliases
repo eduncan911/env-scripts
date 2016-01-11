@@ -94,3 +94,6 @@ function vol() {
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+// requires trash-cli installed
+alias rm='echo -e "Use trash-* commands instead:\\n  trash-put           trashes files and directories.\n  trash-empty         empty the trashcan(s).\n  trash-list          list trashed file.\n  trash-restore       restore a trashed file.\n  trash-rm            remove individual files from trash can."; false'
