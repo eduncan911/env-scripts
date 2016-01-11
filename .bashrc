@@ -53,7 +53,7 @@ fi
 LC_COLLATE="C"; export LC_COLLATE
 
 # default editor
-EDITOR=nano; export EDITOR
+EDITOR=vim; export EDITOR
 
 # source external scripts
 #[[ -d "$HOME/code/golang-crosscompile/crosscompile.bash " ]] && source /home/eric/code/golang-crosscompile/crosscompile.bash    # GO: cross-compiling

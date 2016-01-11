@@ -36,10 +36,10 @@ filetype indent on
 filetype plugin on
 filetype plugin indent on
  
-"set autoindent
+set autoindent
 " copy previous indent on enter 
-"set copyindent
-"set smartindent
+set copyindent
+set smartindent
 
 " toggle paste mode (to paste properly indented text)
 nnoremap <F2> :set invpaste paste?<CR>
