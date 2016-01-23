@@ -41,6 +41,10 @@ for (( i=1; i<=$NUM; i++)); do
  
   # if monitor is defined as primary, adds it to command line parameters
   [ "$PRIMARY" = "yes" ] && PARAM_ARR=("${PARAM_ARR[@]}" "--primary")
+
+  # force activate of this display
+  [ -n "$1" ] && sleep $1
+  xrandr --output "$NAME" --auto
 done
 
 # if needed, wait for some seconds (for X to finish initialisation)
