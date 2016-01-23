@@ -8,8 +8,8 @@ set nocompatible
 set hidden
 
 "enable inline spellcheck
-set spell
-set spelllang=en
+"set spell
+"set spelllang=en
 
 " enable line numbers
 set nu
