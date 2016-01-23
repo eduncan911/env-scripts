@@ -18,7 +18,7 @@ VIRTUAL_ENV_DISABLE_PROMPT=1; export VIRTUAL_ENV_DISABLE_PROMPT
 
 # GO stuff
 GOPATH="$HOME/go"; export GOPATH
-GOROOT="/usr/local/go"; export GOROOT
+GOROOT="/usr/lib/go"; export GOROOT
 PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
 
 # since PATH was modified several times, export it here
