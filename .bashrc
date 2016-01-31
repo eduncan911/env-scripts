@@ -17,8 +17,11 @@ if [ -f /etc/bash_completion ]; then
 fi
 
 # enable solarized TTY support
-if [ -f ~/scripts/tty-solarized/tty-solarized-dark.sh ]; then
-  source ~/scripts/tty-solarized/tty-solarized-dark.sh
+TTY=$(tty)
+TMPTTY=${TTY%/*}
+TMPTTY=${TMP##*/}
+if [ "$TMPTTY" == "pts" ] && [ -f ~/.dotfiles/tty-solarized/tty-solarized-dark.sh ]; then
+  source ~/.dotfiles/tty-solarized/tty-solarized-dark.sh
 fi
 
 # modify bash behavior

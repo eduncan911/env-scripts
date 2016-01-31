@@ -127,3 +127,16 @@ sudo mount /media/spock/scratch
 # http://www.brentwalther.net/blog/how-to-replace-unity-with-i3-window-manager-on-ubuntu-1204
 gsettings set org.gnome.desktop.background show-desktop-icons false
 
+
+# review all explicitly install packages
+pacman -Qei | awk '/^Name/ { name=$3 } /^Groups/ { if ( $3 != "base" && $3 != "base-devel" ) { print name } }'
+# cleanup
+sudo pacman -Rs $(pacman -Qtdq)
+# reinstall explicit packages (to get any missings from above)
+sudo pacman -S $(pacman -Qqe | grep -vx "$(pacman -Qqm)")
+
+# solarized in gnome terminal and tmux
+http://unix.stackexchange.com/questions/201779/vim-solarized-color-scheme-looks-wrong-when-using-tmux
+https://github.com/Anthony25/gnome-terminal-colors-solarized
+https://github.com/altercation/vim-colors-solarized
+
