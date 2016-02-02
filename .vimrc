@@ -21,19 +21,22 @@ let g:go_highlight_build_constraints = 1
 " set term=screen-256color
 set t_Co=256                        " force vim to use 256 colors
 
-" solarized theme
-"let g:solarized_termcolors=256
-set background=dark
-colorscheme solarized
-
 " fixing Background Color Erase when term is set to non-xterm
 if &term =~ '256color'
   " disable Background Color Erase (BCE) so that color schemes
   " render properly when inside 256-color tmux and GNU screen.
   " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
   set t_ut=
+else
+  " switch to fallback mode when there xterm-256color isn't detected
+  " (e.g. gnome's Drop Down Shell extension)
+  let g:solarized_termcolors=256
 endif
 
-map <C-n> :NERDTreeToggle<CR>
+" solarized theme
+"let g:solarized_termcolors=256
+set background=dark
+colorscheme solarized
 
+map <C-n> :NERDTreeToggle<CR>
 
