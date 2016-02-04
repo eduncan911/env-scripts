@@ -2,11 +2,23 @@ execute pathogen#infect()
 syntax on
 filetype plugin indent on
 
+set wrap
+set linebreak
+set formatoptions-=t
+
+let g:netrw_liststyle=3
 let g:neocomplete#enable_at_startup = 1
 
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
+"let g:airline#extensions#tabline#left_sep = ' '
+"let g:airline#extensions#tabline#left_alt_sep = '|'
+"let g:airline_powerline_fonts = 1	" use when font isn't patched
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {} " fixes fontconfig versions 
+endif
+let g:airline_symbols.space = "\ua0"
+let timeoutlen = 50
 
 " let g:go_disable_autoinstall = 0
 
@@ -18,7 +30,7 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 
 " fixing 256 colors in tmux
-" set term=screen-256color
+"set term=xterm-256color
 set t_Co=256                        " force vim to use 256 colors
 
 " fixing Background Color Erase when term is set to non-xterm
@@ -34,7 +46,6 @@ else
 endif
 
 " solarized theme
-"let g:solarized_termcolors=256
 set background=dark
 colorscheme solarized
 
