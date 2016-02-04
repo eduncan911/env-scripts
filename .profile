@@ -4,9 +4,6 @@
 # Used for things not related to bash. Environment vars, PATH and related. 
 # Should be available anytime.  Loaded by GUIs, Sublime, etc.
 
-# Path
-PATH="$HOME/bin:$PATH"
-
 # Ruby rbenv
 [[ -d "$HOME/.rbenv" ]] && PATH="$HOME/.rbenv/bin:$PATH"
 
@@ -20,6 +17,9 @@ VIRTUAL_ENV_DISABLE_PROMPT=1; export VIRTUAL_ENV_DISABLE_PROMPT
 GOPATH="$HOME/go"; export GOPATH
 GOROOT="/usr/lib/go"; export GOROOT
 PATH="$GOPATH/bin:$GOROOT/bin:$PATH"
+
+# setup my personal bin to override all
+PATH="$HOME/bin:$PATH"
 
 # since PATH was modified several times, export it here
 export PATH
@@ -38,3 +38,4 @@ export TERMINAL
 
 # setup Gnome's settings and keyring
 # export $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)
+
