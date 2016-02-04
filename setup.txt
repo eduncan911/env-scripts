@@ -140,3 +140,5 @@ http://unix.stackexchange.com/questions/201779/vim-solarized-color-scheme-looks-
 https://github.com/Anthony25/gnome-terminal-colors-solarized
 https://github.com/altercation/vim-colors-solarized
 
+# mount vmdk (and other image types) file
+http://www.commandlinefu.com/commands/view/13718/mount-a-vmware-virtual-disk-.vmdk-file-on-a-linux-box
