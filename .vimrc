@@ -9,7 +9,6 @@ set hidden
 set wrap
 set linebreak
 set formatoptions-=t
-set number
 
 " overriding sensible settings
 let g:netrw_liststyle=3
@@ -20,7 +19,6 @@ inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
 			\ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
 			\ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
-let g:SuperTabDefaultCompletionType = "<c-n>"
 
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_auto_select = 1
@@ -38,7 +36,7 @@ let g:neocomplete#sources#syntax#min_keyword_length = 3
 "  return neocomplete#close_popup() . "\<CR>"
 "endfunction
 " <TAB>: completion.
-"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
 "inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 "inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
