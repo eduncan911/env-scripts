@@ -9,6 +9,9 @@ set hidden
 set wrap
 set linebreak
 set formatoptions-=t
+set tabstop=4
+set shiftwidth=4
+set directory^=$HOME/.vim/swp//
 
 " overriding sensible settings
 let g:netrw_liststyle=3
@@ -24,11 +27,11 @@ let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_auto_select = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3 
-"let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
 " Plugin key-mappings.
-"inoremap <expr><C-g>     neocomplete#undo_completion()
-"inoremap <expr><C-l>     neocomplete#complete_common_string()
+inoremap <expr><C-g>     neocomplete#undo_completion()
+inoremap <expr><C-l>     neocomplete#complete_common_string()
 
 " <CR>: close popup and save indent.
 "inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
@@ -38,10 +41,23 @@ let g:neocomplete#sources#syntax#min_keyword_length = 3
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
-"inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-"inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-"inoremap <expr><C-y>  neocomplete#close_popup()
-"inoremap <expr><C-e>  neocomplete#cancel_popup()
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplete#close_popup()
+inoremap <expr><C-e>  neocomplete#cancel_popup()
+
+let g:neocomplete#data_directory = '~/.vim/tmp/neocomplete'
+let g:neocomplete#sources#tags#cache_limit_size = 16777216 " 16MB
+ 
+" fuzzy completion breaks dot-repeat more noticeably
+" https://github.com/Shougo/neocomplete.vim/issues/332
+let g:neocomplete#enable_fuzzy_completion = 0
+
+" always use completions from all buffers
+if !exists('g:neocomplete#same_filetypes')
+  let g:neocomplete#same_filetypes = {}
+endif
+let g:neocomplete#same_filetypes._ = '_'
 
 " Go related mappings
 au FileType go nmap <Leader>i <Plug>(go-info)
